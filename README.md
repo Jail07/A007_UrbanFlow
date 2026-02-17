@@ -1,4 +1,4 @@
-# A007_Smart_Traffic_Light
+# A007_UrbanFlow
 
 Coursework Title:
 Development of an Adaptive Traffic Light Control Algorithm Based on Transport Simulation

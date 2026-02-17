@@ -1,9 +1,0 @@
-<routes>
-    <vType id="car" accel="1.0" decel="4.5" length="5" maxSpeed="13.9"/>
-
-    <route id="north_south" edges="-102591331#0 -102591331#1"/>
-    <route id="south_north" edges="-102591331#2 -102591331#3"/>
-
-    <flow id="flow1" route="north_south" begin="0" end="3600" vehsPerHour="600" type="car"/>
-    <flow id="flow2" route="south_north" begin="0" end="3600" vehsPerHour="200" type="car"/>
-</routes>

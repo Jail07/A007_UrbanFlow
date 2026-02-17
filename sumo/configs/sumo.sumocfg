@@ -1,0 +1,10 @@
+<configuration>
+  <input>
+    <net-file value="../../data/networks/city_001.net.xml"/>
+    <route-files value="../../data/routes/routes_001.rou.xml"/>
+  </input>
+  <time>
+    <begin value="0"/>
+    <end value="3600"/>
+  </time>
+</configuration>
