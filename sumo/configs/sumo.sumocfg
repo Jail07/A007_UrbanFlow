@@ -1,7 +1,7 @@
 <configuration>
   <input>
     <net-file value="../../data/networks/city_001.net.xml"/>
-    <route-files value="../../data/routes/routes_001.rou.xml"/>
+    <route-files value="../../data/routes/night.rou.xml;../../data/routes/morning.rou.xml;../../data/routes/day.rou.xml;../../data/routes/evening.rou.xml;../../data/routes/midnight.rou.xml"/>
   </input>
   <time>
     <begin value="0"/>

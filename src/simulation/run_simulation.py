@@ -1,7 +1,7 @@
 import traci
 import csv
 
-SUMO_CFG = "D:/Users/Admin/PycharmProjects/UrbanFlow/sumo/configs/sumo.sumocfg"
+SUMO_CFG = "D:/Users/Admin/PycharmProjects/UrbanFlow/data/routes/sumo.sumocfg"
 TLS_ID = "244500423"
 
 EDGES = {
@@ -41,7 +41,6 @@ with open("D:/Users/Admin/PycharmProjects/UrbanFlow/data/logs/intersection_24450
                 traci.edge.getLastStepMeanSpeed(e)
                 for e in edges
             ) / len(edges)*3.6, 2)
-
 
             writer.writerow([t, d, queue, vehs, speed])
 

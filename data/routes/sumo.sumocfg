@@ -1,0 +1,10 @@
+<configuration>
+  <input>
+    <net-file value="../networks/city_001.net.xml"/>
+    <route-files value="night.rou.xml, morning.rou.xml, day.rou.xml, evening.rou.xml, midnight.rou.xml"/>
+  </input>
+  <time>
+    <begin value="0"/>
+    <end value="86400"/>
+  </time>
+</configuration>
