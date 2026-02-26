@@ -1,0 +1,5 @@
+python "D:\Program Files (x86)\Eclipse\Sumo\tools\randomTrips.py" -n .\data\networks\city_003.net.xml -o .\data\routes\night.rou.xml -e 25200 -p 3 --prefix night_
+python "D:\Program Files (x86)\Eclipse\Sumo\tools\randomTrips.py" -n .\data\networks\city_003.net.xml -o .\data\routes\morning.rou.xml -b 25200 -e 36000 -p 1 --fringe-factor 30 --prefix morning_ --binomial 5
+python "D:\Program Files (x86)\Eclipse\Sumo\tools\randomTrips.py" -n .\data\networks\city_003.net.xml -o .\data\routes\day.rou.xml -b 36000 -e 57600 -p 1.7 --prefix day_
+python "D:\Program Files (x86)\Eclipse\Sumo\tools\randomTrips.py" -n .\data\networks\city_003.net.xml -o .\data\routes\evening.rou.xml -b 57600 -e 68400 -p 1 --fringe-factor 30 --prefix evening_ --binomial 5
+python "D:\Program Files (x86)\Eclipse\Sumo\tools\randomTrips.py" -n .\data\networks\city_003.net.xml -o .\data\routes\midnight.rou.xml -b 68400 -e 86400 -p 2.3 --prefix midnight_
