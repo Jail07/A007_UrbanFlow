@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<routes>
+    <vType id="bus"
+           vClass="bus"
+           accel="1.0"
+           decel="4.0"
+           length="12"
+           minGap="2.5"
+           maxSpeed="16.7"
+           color="1,0,0"/>
+</routes>
