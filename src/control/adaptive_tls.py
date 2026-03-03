@@ -25,7 +25,7 @@ def main():
         else:
             traci.trafficlight.setPhase(tls_id, 2)  # зелёный юг -> север
 
-        time.sleep(0.2)
+        # time.sleep(0.2)
 
     traci.close()
 

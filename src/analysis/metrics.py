@@ -1,6 +1,8 @@
 import pandas as pd
 
-df = pd.read_csv("D:/Users/Admin/PycharmProjects/UrbanFlow/data/logs/intersection_244500423.csv")
+from src.constants.config import LOGS_DIR
+
+df = pd.read_csv(str(LOGS_DIR))
 
 # средняя очередь по направлениям
 print(df.groupby("dir")["queue"].mean())
