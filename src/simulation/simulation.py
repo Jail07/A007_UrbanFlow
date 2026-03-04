@@ -4,7 +4,7 @@ import pandas as pd
 import matplotlib
 import matplotlib.pyplot as plt
 
-from src.configs.configs import SUMO_CFG, LOG_PATH, TLS_ID, SUMO_BINARY
+from src.constants.config import SUMO_CFG, LOG_PATH, TLS_ID, SUMO_BINARY
 
 matplotlib.use('TkAgg')
 

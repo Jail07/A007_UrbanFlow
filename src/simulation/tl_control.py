@@ -1,7 +1,6 @@
 import traci
 
-SUMO_CFG = "D:/Users/Admin/PycharmProjects/UrbanFlow/data/routes/sumo.sumocfg"
-TLS_ID = "244500423"
+from src.constants.config import SUMO_CFG, TLS_ID
 
 EDGES = {
     "N": ["-51095930#1", "51095930#1"],
@@ -17,7 +16,10 @@ MIN_GREEN = 15
 
 
 def queue(edges):
+    """Суммарная очередь на наборе дорог"""
     return sum(traci.edge.getLastStepHaltingNumber(e) for e in edges)
+
+
 
 traci.start(["sumo-gui", "-c", SUMO_CFG])
 
@@ -30,14 +32,18 @@ while traci.simulation.getMinExpectedNumber() > 0:
     traci.simulationStep()
     t = traci.simulation.getTime()
 
+    # минимальное время фазы
     if t - last_switch < MIN_GREEN:
         continue
 
+    # очереди
     q_ns = queue(EDGES["N"] + EDGES["S"])
     q_ew = queue(EDGES["E"] + EDGES["W"])
 
+    # выбор направления
     new_phase = PHASE_NS if q_ns >= q_ew else PHASE_EW
 
+    # переключение
     if new_phase != current_phase:
         traci.trafficlight.setPhase(TLS_ID, new_phase)
         current_phase = new_phase

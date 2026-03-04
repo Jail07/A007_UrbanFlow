@@ -3,7 +3,9 @@ matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import pandas as pd
 
-df = pd.read_csv("D:/Users/Admin/PycharmProjects/UrbanFlow/data/logs/intersection_244500423.csv")
+from src.constants.config import DF_PATH
+
+df = pd.read_csv(str(DF_PATH))
 
 pivot = df.pivot(index="time", columns="dir", values="queue")
 
