@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2026-03-03T15:38:57.286800+06:00 by Eclipse SUMO netedit 1.26.0
+<!-- generated on 2026-03-04T22:05:52.135468+06:00 by Eclipse SUMO netedit 1.26.0
 -->
 
 <additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
     <!-- StoppingPlaces -->
-    <busStop id="bus_stop_gorkiy" name="gorkiy" lane="620932850#1_0" startPos="59.30" endPos="89.30"/>
-    <busStop id="bus_stop_pudovkin" name="pudovkin" lane="-829563410#2_0" startPos="56.01" endPos="86.01"/>
-    <busStop id="bus_stop_tashrabat" name="tashrabat" lane="51095934#3_0" startPos="0.00" endPos="28.13"/>
-    <busStop id="bus_stop_tashrabat_1" name="tashrabat_1" lane="-51095934#8_0" startPos="28.04" endPos="58.04"/>
-    <busStop id="bus_stop_gor_gai" name="gor_gai" lane="51095934#11_0" startPos="98.60" endPos="128.60"/>
-    <busStop id="bus_stop_gor_gai_1" name="gor_gai_1" lane="-51095934#11_0" startPos="28.24" endPos="58.24"/>
     <busStop id="bus_stop_gimnaziya_29" name="gimnaziya_29" lane="622102030#2_0" startPos="18.94" endPos="43.94"/>
     <busStop id="bus_stop_gimnaziya_29_1" name="gimnaziya_29_1" lane="-622102030#1_0" startPos="33.85" endPos="58.85"/>
+    <busStop id="bus_stop_gor_gai" name="gor_gai" lane="51095934#11_0" startPos="98.60" endPos="128.60"/>
+    <busStop id="bus_stop_gor_gai_1" name="gor_gai_1" lane="-51095934#11_0" startPos="28.24" endPos="58.24"/>
+    <busStop id="bus_stop_gorkiy" name="gorkiy" lane="620932850#1_0" startPos="59.36" endPos="89.36"/>
     <busStop id="bus_stop_kulatova" name="kulatova" lane="186475564#0_0" startPos="22.56" endPos="45.56"/>
     <busStop id="bus_stop_mederova" name="mederova" lane="580760138#3_0" startPos="80.00" endPos="103.00"/>
     <busStop id="bus_stop_mederova_1" name="mederova_1" lane="-580760138#0_0" startPos="63.55" endPos="86.55"/>
+    <busStop id="bus_stop_pudovkin" name="pudovkin" lane="-829563410#2_0" startPos="56.01" endPos="86.01"/>
+    <busStop id="bus_stop_tashrabat" name="tashrabat" lane="51095934#3_0" startPos="0.00" endPos="28.13"/>
+    <busStop id="bus_stop_tashrabat_1" name="tashrabat_1" lane="-51095934#8_0" startPos="28.04" endPos="58.04"/>
     <busStop id="bus_stop_vefa" name="vefa" lane="-622102031#5_0" startPos="12.03" endPos="42.03"/>
     <busStop id="bus_stop_vefa_1" name="vefa_1" lane="-580760138#5_0" startPos="44.11" endPos="74.11"/>
 </additional>
