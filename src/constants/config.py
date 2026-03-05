@@ -7,7 +7,7 @@ ROUTES_DIR = DATA_DIR / "routes"
 NETWORKS_DIR = DATA_DIR / "network"
 OSM_DIR = DATA_DIR / "osm"
 
-SUMO_CFG = ROUTES_DIR / "sumo.sumocfg"
+SUMO_CFG = ROUTES_DIR / "data/routes/sumo.sumocfg"
 LOG_PATH = LOGS_DIR / "urbanflow_detailed_log.csv"
 DF_PATH = LOGS_DIR / "intersection_244500423.csv"
 

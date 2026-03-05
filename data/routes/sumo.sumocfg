@@ -1,6 +1,6 @@
 <configuration>
   <input>
-    <net-file value="../networks/city_003.net.xml"/>
+    <net-file value="../networks/city_004.net.xml"/>
     <route-files value="vehicle_types.rou.xml,
                         night.rou.xml,
                         morning.rou.xml,

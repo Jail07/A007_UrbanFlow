@@ -27,7 +27,7 @@ def get_lane_info(edge_id):
 def get_buses_on_edge(edge_id):
     vehicles = traci.edge.getLastStepVehicleIDs(edge_id)
     buses = [v for v in vehicles if traci.vehicle.getVehicleClass(v) == "bus"]
-    for v in vehicles: print(f"ID: {v}, Class: {traci.vehicle.getVehicleClass(v)}")
+    # for v in vehicles: print(f"ID: {v}, Class: {traci.vehicle.getVehicleClass(v)}")
     bus_routes = [f"{b}:[{len(traci.vehicle.getRoute(b))} edges]" for b in buses]
     return len(buses), "; ".join(bus_routes)
 
@@ -85,17 +85,17 @@ def run_simulation():
 
 def analyze_results():
     df = pd.read_csv(str(LOG_PATH))
-    print("\nструктура дорог по направлениям")
+    # print("\nструктура дорог по направлениям")
     infra = df.groupby("dir")[["lane_count", "lane_configs"]].first()
-    print(infra)
+    # print(infra)
 
-    print("\nстатистика по направлениям")
+    # print("\nстатистика по направлениям")
     stats = df.groupby("dir").agg({
         "queue": "mean",
         "bus_count": "sum",
         "mean_speed": "mean"
     })
-    print(stats)
+    # print(stats)
 
     pivot_q = df.pivot(index="time", columns="dir", values="queue")
     pivot_q.plot(figsize=(10, 5))
