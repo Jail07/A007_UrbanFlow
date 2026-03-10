@@ -1,0 +1,24 @@
+<configuration>
+  <input>
+    <net-file value="../../networks/city_005.net.xml"/>
+    <route-files value="../vehicle_types.rou.xml,
+                        night.rou.xml,
+                        early.rou.xml,
+                        morning_peak.rou.xml,
+                        late_morning.rou.xml,
+                        day.rou.xml,
+                        evening.rou.xml,
+                        evening_peak.rou.xml,
+                        midnight.rou.xml,
+                        ../bus/bus.rou.xml"/>
+    <additional-files value="../../osm/buildings.poly.xml, ../bus/bus_stop.add.xml, ../../osm/vtype.add.xml"/>
+  </input>
+  <time>
+    <begin value="0"/>
+    <end value="86400"/>
+    <time-to-teleport value="300"/>
+  </time>
+  <processing>
+        <ignore-junction-blocker value="60"/>
+  </processing>
+</configuration>

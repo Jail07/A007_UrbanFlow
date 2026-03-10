@@ -1,14 +1,14 @@
 <configuration>
   <input>
-    <net-file value="../networks/city_004.net.xml"/>
-    <route-files value="vehicle_types.rou.xml,
-                        night.rou.xml,
-                        morning.rou.xml,
-                        day.rou.xml,
-                        evening.rou.xml,
-                        midnight.rou.xml,
-                        bus.rou.xml"/>
-    <additional-files value="../osm/buildings.poly.xml, bus_stop.add.xml"/>
+    <net-file value="./networks/city_005.net.xml"/>
+    <route-files value="./bus/vehicle_types.rou.xml,
+                        ./scenarios/night.rou.xml,
+                        ./scenarios/morning.rou.xml,
+                        ./scenarios/day.rou.xml,
+                        ./scenarios/evening.rou.xml,
+                        ./scenarios/midnight.rou.xml,
+                        ./bus/bus.rou.xml"/>
+    <additional-files value="./osm/buildings.poly.xml, ./bus/bus_stop.add.xml, ./osm/vtype.add.xml"/>
   </input>
   <time>
     <begin value="0"/>

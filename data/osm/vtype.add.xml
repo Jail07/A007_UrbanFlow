@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<additional>
+    <vType id="night_" color="255,0,0" vClass="passenger"/>
+    <vType id="blue_car" color="0,0,255" vClass="passenger"/>
+    <vType id="green_car" color="0,255,0" vClass="passenger"/>
+    <vType id="yellow_car" color="255,255,0" vClass="passenger"/>
+</additional>
