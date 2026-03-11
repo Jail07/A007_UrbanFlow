@@ -10,7 +10,7 @@ OSM_DIR = DATA_DIR / "osm"
 VIDEO_DIR = DATA_DIR / "video"
 YOLOV3_DIR = DATA_DIR / "yolov3"
 
-SUMO_CFG = ROUTES_DIR / "data/routes/sumo.sumocfg"
+SUMO_CFG = ROUTES_DIR / "data/routes/scenarios_02/sumo.sumocfg"
 LOG_PATH = LOGS_DIR / "urbanflow_detailed_log.csv"
 DF_PATH = LOGS_DIR / "intersection_244500423.csv"
 VIDEO_PATH = VIDEO_DIR / "video_0.mp4"

@@ -3,15 +3,81 @@ import csv
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from src.constants.config import SUMO_CFG, LOG_PATH, TLS_ID, SUMO_BINARY
+from pathlib import Path
 
+BASE_DIR = Path(__file__).resolve().parents[2]
+
+DATA_DIR = BASE_DIR / "data"
+LOGS_DIR = DATA_DIR / "logs"
+ROUTES_DIR = DATA_DIR / "routes"
+NETWORKS_DIR = DATA_DIR / "network"
+OSM_DIR = DATA_DIR / "osm"
+VIDEO_DIR = DATA_DIR / "video"
+YOLOV3_DIR = DATA_DIR / "yolov3"
+
+SUMO_CFG = "../../data/routes/scenarios_02/sumo.sumocfg"
+LOG_PATH = LOGS_DIR / "urbanflow_detailed_log.csv"
+DF_PATH = LOGS_DIR / "intersection_244500423.csv"
+VIDEO_PATH = VIDEO_DIR / "video_0.mp4"
+VIDEO_PATH_1 = VIDEO_DIR / "video_1.mp4"
+
+
+YOLOV3_CFG_PATH = YOLOV3_DIR / "yolov3.cfg"
+YOLOV3_WEIGHTS_PATH = YOLOV3_DIR / "yolov3.weights"
+
+SUMO_BINARY = "sumo-gui"
+# SUMO_BINARY = "sumo"
+TLS_ID = "244500423"
 EDGES = {
     "W": ["-622102031#6", "622102031#6"],
     "N": ["-51095930#1", "51095930#1"],
     "E": ["-620932850#1", "620932850#1"],
-    "S": ["-580760138#5", "580760138#5"],
+    "S": ["-580760138#5", "580760138#5"]}
+
+
+IN_EDGES = {
+    "W": "622102031#6",
+    "N": "51095930#1",
+    "E": "620932850#1",
+    "S": "580760138#5",
+}
+OUT_EDGES = {
+    "W": "-622102031#6",
+    "N": "-51095930#1",
+    "E": "-620932850#1",
+    "S": "-580760138#5",
 }
 
+PHASE_NS_GREEN = 0
+PHASE_EW_GREEN = 2
+YELLOW_DURATION = 3
+
+
+def get_edge_queue(edge_id):
+    """Получает количество стоящих машин на ребре."""
+    return traci.edge.getLastStepHaltingNumber(edge_id)
+
+
+def calculate_phase_pressure():
+    """Рассчитывает давление для фаз NS и EW."""
+    # Очереди на вход
+    q_in_n = get_edge_queue(IN_EDGES["N"])
+    q_in_s = get_edge_queue(IN_EDGES["S"])
+    q_in_e = get_edge_queue(IN_EDGES["E"])
+    q_in_w = get_edge_queue(IN_EDGES["W"])
+
+    # Очереди на выход
+    q_out_n = get_edge_queue(OUT_EDGES["N"])
+    q_out_s = get_edge_queue(OUT_EDGES["S"])
+    q_out_e = get_edge_queue(OUT_EDGES["E"])
+    q_out_w = get_edge_queue(OUT_EDGES["W"])
+
+    # Давление фазы = (Очередь на вход) - (Очередь на выход)
+    # Если на выезде пробка, давление снижается, чтобы не запирать перекресток дальше.
+    pressure_ns = (q_in_n + q_in_s) - (q_out_n + q_out_s)
+    pressure_ew = (q_in_e + q_in_w) - (q_out_e + q_out_w)
+
+    return pressure_ns, pressure_ew
 
 def get_lane_info(edge_id):
     num_lanes = traci.edge.getLaneNumber(edge_id)
@@ -35,6 +101,9 @@ def get_buses_on_edge(edge_id):
 def run_simulation():
     traci.start([SUMO_BINARY, "-c", str(SUMO_CFG)])
 
+    last_switch_time = 0
+    min_green_time = 15
+
     with open(str(LOG_PATH), "w", newline="") as f:
         writer = csv.writer(f)
         writer.writerow([
@@ -47,6 +116,23 @@ def run_simulation():
         while traci.simulation.getMinExpectedNumber() > 0:
             traci.simulationStep()
             t = traci.simulation.getTime()
+
+            # --- ЛОГИКА АЛГОРИТМА MAX-PRESSURE ---
+            current_phase = traci.trafficlight.getPhase(TLS_ID)
+
+            # Принимаем решение только если прошел минимальный зеленый интервал
+            # и сейчас не горит желтый свет (фазы 1 и 3)
+            if t - last_switch_time > min_green_time and current_phase in [PHASE_NS_GREEN, PHASE_EW_GREEN]:
+
+                pressure_ns, pressure_ew = calculate_phase_pressure()
+
+                # Принимаем решение: чье давление больше?
+                if pressure_ns >= pressure_ew and current_phase != PHASE_NS_GREEN:
+                    traci.trafficlight.setPhase(TLS_ID, PHASE_NS_GREEN)
+                    last_switch_time = t
+                elif pressure_ew > pressure_ns and current_phase != PHASE_EW_GREEN:
+                    traci.trafficlight.setPhase(TLS_ID, PHASE_EW_GREEN)
+                    last_switch_time = t
 
             for direction, edges in EDGES.items():
                 q_total = 0
