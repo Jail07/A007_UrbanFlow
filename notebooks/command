@@ -5,15 +5,15 @@ python "D:\Program Files (x86)\Eclipse\Sumo\tools\randomTrips.py" -n .\data\netw
 python "D:\Program Files (x86)\Eclipse\Sumo\tools\randomTrips.py" -n .\data\networks\city_003.net.xml -o .\data\routes\midnight.rou.xml -b 68400 -e 86400 -p 2.5 --prefix midnight_
 
 
-python "D:\Program Files (x86)\Eclipse\Sumo\tools\randomTrips.py" -n .\data\networks\city_005.net.xml -o .\data\routes\scenarios_02\night.rou.xml -b 0 -e 18000 -p 3 --prefix night_ -t "type='night_car'" --seed 2026
-python "D:\Program Files (x86)\Eclipse\Sumo\tools\randomTrips.py" -n .\data\networks\city_005.net.xml -o .\data\routes\scenarios_02\early.rou.xml -b 18000 -e 25200 -p 1.5 --prefix early_ --seed 2026 -t "type='early_morning_car'"
-python "D:\Program Files (x86)\Eclipse\Sumo\tools\randomTrips.py" -n .\data\networks\city_005.net.xml -o .\data\routes\scenarios_02\morning_peak.rou.xml -b 25200 -e 32400 -p 0.8 --fringe-factor 30 --binomial 5 --prefix morning_peak_ --seed 2026 -t "type='morning_peak_car'"
-python "D:\Program Files (x86)\Eclipse\Sumo\tools\randomTrips.py" -n .\data\networks\city_005.net.xml -o .\data\routes\scenarios_02\late_morning.rou.xml -b 32400 -e 43200 -p 1.5 --prefix late_morning_ --seed 2026 -t "type='dawn_car'"
-python "D:\Program Files (x86)\Eclipse\Sumo\tools\randomTrips.py" -n .\data\networks\city_005.net.xml -o .\data\routes\scenarios_02\lunch.rou.xml -b 43200 -e 50400 -p 1 --prefix lunch_ --seed 2026 -t "type='lunch_car'"
-python "D:\Program Files (x86)\Eclipse\Sumo\tools\randomTrips.py" -n .\data\networks\city_005.net.xml -o .\data\routes\scenarios_02\day.rou.xml -b 50400 -e 57600 -p 1.2 --prefix day_ --seed 2026 -t "type='day_car'"
-python "D:\Program Files (x86)\Eclipse\Sumo\tools\randomTrips.py" -n .\data\networks\city_005.net.xml -o .\data\routes\scenarios_02\evening_peak.rou.xml -b 57600 -e 68400 -p 0.9 --fringe-factor 30 --binomial 5 --prefix evening_peak_ --seed 2026 -t "type='evening_peak_car'"
-python "D:\Program Files (x86)\Eclipse\Sumo\tools\randomTrips.py" -n .\data\networks\city_005.net.xml -o .\data\routes\scenarios_02\evening.rou.xml -b 68400 -e 79200 -p 1.5 --prefix evening_ --seed 2026 -t "type='afternoon_car'"
-python "D:\Program Files (x86)\Eclipse\Sumo\tools\randomTrips.py" -n .\data\networks\city_005.net.xml -o .\data\routes\scenarios_02\midnight.rou.xml -b 79200 -e 86400 -p 2.5 --prefix midnight_ --seed 2026 -t "type='late_evening_car'"
+python "D:\Program Files (x86)\Eclipse\Sumo\tools\randomTrips.py" -n .\data\networks\city_006.net.xml -o .\data\routes\scenarios_03\night.rou.xml -b 0 -e 18000 -p 3 --prefix night_ -t "type='night_car'" --seed 2026
+python "D:\Program Files (x86)\Eclipse\Sumo\tools\randomTrips.py" -n .\data\networks\city_006.net.xml -o .\data\routes\scenarios_03\early.rou.xml -b 18000 -e 25200 -p 1.5 --prefix early_ --seed 2026 -t "type='early_morning_car'"
+python "D:\Program Files (x86)\Eclipse\Sumo\tools\randomTrips.py" -n .\data\networks\city_006.net.xml -o .\data\routes\scenarios_03\morning_peak.rou.xml -b 25200 -e 32400 -p 0.8 --fringe-factor 30 --binomial 5 --prefix morning_peak_ --seed 2026 -t "type='morning_peak_car'"
+python "D:\Program Files (x86)\Eclipse\Sumo\tools\randomTrips.py" -n .\data\networks\city_006.net.xml -o .\data\routes\scenarios_03\late_morning.rou.xml -b 32400 -e 43200 -p 1.5 --prefix late_morning_ --seed 2026 -t "type='dawn_car'"
+python "D:\Program Files (x86)\Eclipse\Sumo\tools\randomTrips.py" -n .\data\networks\city_006.net.xml -o .\data\routes\scenarios_03\lunch.rou.xml -b 43200 -e 50400 -p 1 --prefix lunch_ --seed 2026 -t "type='lunch_car'"
+python "D:\Program Files (x86)\Eclipse\Sumo\tools\randomTrips.py" -n .\data\networks\city_006.net.xml -o .\data\routes\scenarios_03\day.rou.xml -b 50400 -e 57600 -p 1.2 --prefix day_ --seed 2026 -t "type='day_car'"
+python "D:\Program Files (x86)\Eclipse\Sumo\tools\randomTrips.py" -n .\data\networks\city_006.net.xml -o .\data\routes\scenarios_03\evening_peak.rou.xml -b 57600 -e 68400 -p 0.9 --fringe-factor 30 --binomial 5 --prefix evening_peak_ --seed 2026 -t "type='evening_peak_car'"
+python "D:\Program Files (x86)\Eclipse\Sumo\tools\randomTrips.py" -n .\data\networks\city_006.net.xml -o .\data\routes\scenarios_03\evening.rou.xml -b 68400 -e 79200 -p 1.5 --prefix evening_ --seed 2026 -t "type='afternoon_car'"
+python "D:\Program Files (x86)\Eclipse\Sumo\tools\randomTrips.py" -n .\data\networks\city_006.net.xml -o .\data\routes\scenarios_03\midnight.rou.xml -b 79200 -e 86400 -p 2.5 --prefix midnight_ --seed 2026 -t "type='late_evening_car'"
 
 
 

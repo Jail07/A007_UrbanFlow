@@ -5,11 +5,11 @@
 
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
     <!-- Routes -->
-    <route id="bus_7t" edges="-186475564#4 -186475564#3 -186475564#2 -186475564#1 -186475564#0 -51095930#2 -51095930#1 -51095930#0 620932850#0 620932850#1 620932850#2 620932850#3 829563410#0 829563410#1 829563410#2 51095934#0 51095934#1 51095934#2 51095934#3 51095934#4 51095934#5 51095934#6 51095934#7 51095934#8 51095934#9 51095934#10 51095934#11 51095934#12 51095934#13 51095934#14 51095934#15" color="red">
-        <stop busStop="bus_stop_gorkiy" duration="15"/>
-        <stop busStop="bus_stop_tashrabat" duration="15"/>
-        <stop busStop="bus_stop_gor_gai" duration="15"/>
-    </route>
+<!--    <route id="bus_7t" edges="-186475564#4 -186475564#3 -186475564#2 -186475564#1 -186475564#0 -51095930#2 -51095930#1 -51095930#0 620932850#0 620932850#1 620932850#2 620932850#3 829563410#0 829563410#1 829563410#2 51095934#0 51095934#1 51095934#2 51095934#3 51095934#4 51095934#5 51095934#6 51095934#7 51095934#8 51095934#9 51095934#10 51095934#11 51095934#12 51095934#13 51095934#14 51095934#15" color="red">-->
+<!--        <stop busStop="bus_stop_gorkiy" duration="15"/>-->
+<!--        <stop busStop="bus_stop_tashrabat" duration="15"/>-->
+<!--        <stop busStop="bus_stop_gor_gai" duration="15"/>-->
+<!--    </route>-->
     <route id="bus_r102" edges="622102030#0 622102030#1 622102030#2 622102030#3 622102031#0 622102031#1 622102031#2 622102031#3 622102031#4 622102031#5 622102031#6 622102031#7 620932850#0 620932850#1 620932850#2 620932850#3 829563410#0 829563410#1 829563410#2 51095934#0 51095934#1 51095934#2 51095934#3 51095934#4 51095934#5 51095934#6 51095934#7 51095934#8 51095934#9 51095934#10 51095934#11 51095934#12 51095934#13 51095934#14 51095934#15">
         <stop busStop="bus_stop_gimnaziya_29" duration="15"/>
         <stop busStop="bus_stop_gorkiy" duration="15"/>
@@ -31,17 +31,17 @@
         <stop busStop="bus_stop_mederova" duration="15"/>
         <stop busStop="bus_stop_kulatova" duration="15"/>
     </route>
-    <route id="bus_r7t_R" edges="-51095934#15 -51095934#14 -51095934#13 -51095934#12 -51095934#11 -51095934#10 -51095934#9 -51095934#8 -51095934#7 -51095934#6 -51095934#5 -51095934#4 -51095934#3 -51095934#2 -51095934#1 -51095934#0 -829563410#2 -829563410#1 -829563410#0 -620932850#3 -620932850#2 -620932850#1 -620932850#0 51095930#0 51095930#1 51095930#2 186475564#0 186475564#1 186475564#2 186475564#3 186475564#4" color="red">
-        <stop busStop="bus_stop_gor_gai_1" duration="15"/>
-        <stop busStop="bus_stop_tashrabat_1" duration="15"/>
-        <stop busStop="bus_stop_pudovkin" duration="15"/>
-        <stop busStop="bus_stop_kulatova" duration="15"/>
-    </route>
+<!--    <route id="bus_r7t_R" edges="-51095934#15 -51095934#14 -51095934#13 -51095934#12 -51095934#11 -51095934#10 -51095934#9 -51095934#8 -51095934#7 -51095934#6 -51095934#5 -51095934#4 -51095934#3 -51095934#2 -51095934#1 -51095934#0 -829563410#2 -829563410#1 -829563410#0 -620932850#3 -620932850#2 -620932850#1 -620932850#0 51095930#0 51095930#1 51095930#2 186475564#0 186475564#1 186475564#2 186475564#3 186475564#4" color="red">-->
+<!--        <stop busStop="bus_stop_gor_gai_1" duration="15"/>-->
+<!--        <stop busStop="bus_stop_tashrabat_1" duration="15"/>-->
+<!--        <stop busStop="bus_stop_pudovkin" duration="15"/>-->
+<!--        <stop busStop="bus_stop_kulatova" duration="15"/>-->
+<!--    </route>-->
 
-    <flow id="bus_7t_flow" type="bus" route="bus_7t" begin="25200" end="68400" period="360"/>
+<!--    <flow id="bus_7t_flow" type="bus" route="bus_7t" begin="25200" end="68400" period="360"/>-->
     <flow id="bus_r102_flow" type="bus" route="bus_r102" begin="25200" end="68400" period="360"/>
     <flow id="bus_r102_R_flow" type="bus" route="bus_r102_R" begin="25200" end="68400" period="360"/>
     <flow id="bus_r152_flow" type="bus" route="bus_r152" begin="25200" end="68400" period="360"/>
     <flow id="bus_r152_R_flow" type="bus" route="bus_r152_R" begin="25200" end="68400" period="360"/>
-    <flow id="bus_r7t_R_flow" type="bus" route="bus_r7t_R" begin="25200" end="68400" period="360"/>
+<!--    <flow id="bus_r7t_R_flow" type="bus" route="bus_r7t_R" begin="25200" end="68400" period="360"/>-->
 </routes>

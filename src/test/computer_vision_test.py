@@ -3,14 +3,30 @@
 import cv2
 import numpy as np
 
-from src.constants.config import VIDEO_PATH, VIDEO_PATH_1, YOLOV3_WEIGHTS_PATH, YOLOV3_CFG_PATH
+# from src.constants.config import VIDEO_PATH, VIDEO_PATH_1, YOLOV3_WEIGHTS_PATH, YOLOV3_CFG_PATH
+
+
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parents[2]
+
+DATA_DIR = BASE_DIR / "data"
+VIDEO_DIR = DATA_DIR / "video"
+YOLOV3_DIR = DATA_DIR / "yolov3"
+
+VIDEO_PATH = VIDEO_DIR / "video_0.mp4"
+VIDEO_PATH_1 = VIDEO_DIR / "video_1.mp4"
+
+YOLOV3_CFG_PATH = YOLOV3_DIR / "yolov3.cfg"
+YOLOV3_WEIGHTS_PATH = YOLOV3_DIR / "yolov3.weights"
+
 
 net = cv2.dnn.readNet(YOLOV3_WEIGHTS_PATH, YOLOV3_CFG_PATH)
 layer_names = net.getLayerNames()
 output_layers = [layer_names[i - 1] for i in net.getUnconnectedOutLayers()]
 
-cap = cv2.VideoCapture(VIDEO_PATH)
-# cap = cv2.VideoCapture(VIDEO_PATH_1)
+# cap = cv2.VideoCapture(VIDEO_PATH)
+cap = cv2.VideoCapture(VIDEO_PATH_1)
 
 while cap.isOpened():
     ret, frame = cap.read()
