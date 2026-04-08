@@ -12,7 +12,7 @@ LOGS_DIR = DATA_DIR / "logs"
 ROUTES_DIR = DATA_DIR / "routes"
 NETWORKS_DIR = DATA_DIR / "network"
 OSM_DIR = DATA_DIR / "osm"
-SUMO_CFG = "data/routes/scenarios_02/sumo.sumocfg"
+SUMO_CFG = "data/routes/scenarios_04/sumo.sumocfg"
 LOG_PATH = LOGS_DIR / "urbanflow_detailed_log.csv"
 
 SUMO_BINARY = "sumo-gui"
