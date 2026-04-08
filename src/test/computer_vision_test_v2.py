@@ -1,6 +1,9 @@
 # yolov8
+# python -m src.test.computer_vision_test_v2
 
 import cv2
+import csv
+import time
 
 from ultralytics import YOLO
 from deep_sort_realtime.deepsort_tracker import DeepSort
@@ -15,63 +18,56 @@ model = YOLO("yolov8n.pt")
 # yolov8x.pt   (extra large)
 
 tracker = DeepSort(max_age=30)
-
 cap = cv2.VideoCapture(VIDEO_PATH_1)
 
-vehicle_classes = [2, 3, 5, 7]  # car, motorcycle, bus, truck
+# Маппинг классов COCO: 2-car, 3-motorcycle, 5-bus, 7-truck
+target_classes = {2: "car", 3: "motorcycle", 5: "bus", 7: "truck"}
 
-while cap.isOpened():
+with open("data/logs/cv_detections_v2.csv", "w", newline="") as f:
+    writer = csv.writer(f)
+    writer.writerow(["timestamp", "car", "bus", "truck", "motorcycle", "total_count"])
 
-    ret, frame = cap.read()
-    if not ret:
-        break
+    while cap.isOpened():
+        ret, frame = cap.read()
+        if not ret: break
 
-    results = model(frame)
+        results = model(frame)
+        detections = []
 
-    detections = []
+        counts = {"car": 0, "motorcycle": 0, "bus": 0, "truck": 0}
 
-    for r in results:
-        boxes = r.boxes
+        for r in results:
+            for box in r.boxes:
+                cls = int(box.cls[0])
+                conf = float(box.conf[0])
 
-        for box in boxes:
+                if cls in target_classes and conf > 0.5:
+                    label = target_classes[cls]
+                    counts[label] += 1
 
-            cls = int(box.cls[0])
-            conf = float(box.conf[0])
+                    x1, y1, x2, y2 = map(int, box.xyxy[0])
+                    detections.append(([x1, y1, x2 - x1, y2 - y1], conf, label))
 
-            if cls in vehicle_classes and conf > 0.5:
+        tracks = tracker.update_tracks(detections, frame=frame)
 
-                x1, y1, x2, y2 = map(int, box.xyxy[0])
+        writer.writerow([
+            time.strftime("%Y-%m-%d %H:%M:%S"),
+            counts["car"],
+            counts["bus"],
+            counts["truck"],
+            counts["motorcycle"],
+            sum(counts.values())
+        ])
 
-                w = x2 - x1
-                h = y2 - y1
+        for track in tracks:
+            if not track.is_confirmed(): continue
+            l, t, r, b = map(int, track.to_ltrb())
+            cv2.rectangle(frame, (l, t), (r, b), (255, 0, 0), 2)
+            cv2.putText(frame, f"{track.track_id} {track.get_det_class()}", (l, t - 10),
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
-                detections.append(([x1, y1, w, h], conf, "car"))
-
-    tracks = tracker.update_tracks(detections, frame=frame)
-
-    for track in tracks:
-
-        if not track.is_confirmed():
-            continue
-
-        track_id = track.track_id
-        l, t, r, b = map(int, track.to_ltrb())
-
-        cv2.rectangle(frame, (l, t), (r, b), (255, 0, 0), 2)
-        cv2.putText(
-            frame,
-            f"ID {track_id}",
-            (l, t - 10),
-            cv2.FONT_HERSHEY_SIMPLEX,
-            0.7,
-            (0, 255, 0),
-            2,
-        )
-
-    cv2.imshow("Tracking", frame)
-
-    if cv2.waitKey(1) == 27:
-        break
+        cv2.imshow("UrbanFlow CV v2", frame)
+        if cv2.waitKey(1) == 27: break
 
 cap.release()
 cv2.destroyAllWindows()

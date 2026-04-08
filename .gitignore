@@ -1,7 +1,7 @@
 venv
 .venv
 .idea
-data/video/video.mp4
+data/video/video_).mp4
 data/video/video_1.mp4
 data/yolov3/yolov3.cfg
 data/yolov3/yolov3.weights
