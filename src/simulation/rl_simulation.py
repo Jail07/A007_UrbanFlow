@@ -15,48 +15,46 @@ import torch.optim as optim
 import random
 from collections import deque
 
-# ==========================================
-# 1. КОНФИГУРАЦИЯ И ПУТИ
-# ==========================================
+
 BASE_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = BASE_DIR / "data"
 LOGS_DIR = DATA_DIR / "logs"
 SUMO_CFG = "data/routes/scenarios_04/sumo.sumocfg"
 LOG_PATH = LOGS_DIR / "urbanflow_detailed_log.csv"
-RL_LOG_PATH = LOGS_DIR / "rl_training_log.csv"  # НОВЫЙ ЛОГ ДЛЯ ИИ
+RL_LOG_PATH = LOGS_DIR / "rl_training_log.csv"
 
-SUMO_BINARY = "sumo"
-# TLS_ID = "244500423"
-#
-# EDGES = {
-#     "W": ["-622102031#6", "622102031#6"],
-#     "N": ["-51095930#1", "51095930#1"],
-#     "E": ["-620932850#1", "620932850#1"],
-#     "S": ["-580760138#5", "580760138#5"]
-# }
-#
-# IN_EDGES = {"W": "622102031#6", "N": "-51095930#1", "E": "-620932850#1", "S": "580760138#5"}
-# OUT_EDGES = {"W": "-622102031#6", "N": "51095930#1", "E": "620932850#1", "S": "-580760138#5"}
+SUMO_BINARY = "sumo-gui"
+TLS_ID = "244500423"
 
-INTERSECTIONS = {
-    "Vefa_244500423": {
-        "id": "244500423",
-        "in_edges": ["-51095930#1", "622102031#6", "-620932850#1", "580760138#5"],
-        "out_edges": ["51095930#1", "-622102031#6", "620932850#1", "-580760138#5"],
-        "phases": {"NS_GREEN": 0, "NS_YELLOW": 1, "EW_GREEN": 2, "EW_YELLOW": 3}
-    },
-    "Kulatov_244500424": {
-        "id": "244500424",
-        "in_edges": ["-186475564#4", "25684557#4", "186475564#1", "477271462#4"],
-        "out_edges": ["186475564#4", "-25684557#4", "-186475564#1", "-477271462#4"],
-        "phases": {"NS_GREEN": 0, "NS_YELLOW": 1, "EW_GREEN": 2, "EW_YELLOW": 3}
-    }
+EDGES = {
+    "W": ["-622102031#6", "622102031#6"],
+    "N": ["-51095930#1", "51095930#1"],
+    "E": ["-620932850#1", "620932850#1"],
+    "S": ["-580760138#5", "580760138#5"]
 }
 
-# PHASE_NS_GREEN = 0
-# PHASE_NS_YELLOW = 1
-# PHASE_EW_GREEN = 2
-# PHASE_EW_YELLOW = 3
+IN_EDGES = {"W": "622102031#6", "N": "-51095930#1", "E": "-620932850#1", "S": "580760138#5"}
+OUT_EDGES = {"W": "-622102031#6", "N": "51095930#1", "E": "620932850#1", "S": "-580760138#5"}
+
+# INTERSECTIONS = {
+#     "Vefa_244500423": {
+#         "id": "244500423",
+#         "in_edges": ["-51095930#1", "622102031#6", "-620932850#1", "580760138#5"],
+#         "out_edges": ["51095930#1", "-622102031#6", "620932850#1", "-580760138#5"],
+#         "phases": {"NS_GREEN": 0, "NS_YELLOW": 1, "EW_GREEN": 2, "EW_YELLOW": 3}
+#     },
+#     "Kulatov_244500424": {
+#         "id": "244500424",
+#         "in_edges": ["-186475564#4", "25684557#4", "186475564#1", "477271462#4"],
+#         "out_edges": ["186475564#4", "-25684557#4", "-186475564#1", "-477271462#4"],
+#         "phases": {"NS_GREEN": 0, "NS_YELLOW": 1, "EW_GREEN": 2, "EW_YELLOW": 3}
+#     }
+# }
+
+PHASE_NS_GREEN = 0
+PHASE_NS_YELLOW = 1
+PHASE_EW_GREEN = 2
+PHASE_EW_YELLOW = 3
 
 YELLOW_DURATION = 4
 MIN_GREEN_TIME = 15
@@ -64,9 +62,6 @@ MIN_GREEN_TIME = 15
 MAX_SIMULATION_STEPS = 86400
 
 
-# ==========================================
-# 2. АРХИТЕКТУРА ИИ
-# ==========================================
 class DQN_Network(nn.Module):
     def __init__(self, input_size, output_size):
         super(DQN_Network, self).__init__()
@@ -99,7 +94,6 @@ class HybridPressureAgent:
         self.model_path = LOGS_DIR / "hybrid_brain.pth"
 
     def save_model(self):
-        """Сохраняет веса нейросети и текущий Эпсилон"""
         torch.save({
             'model_state_dict': self.model.state_dict(),
             'epsilon': self.epsilon
@@ -107,7 +101,6 @@ class HybridPressureAgent:
         print(f"💾 Мозг агента сохранен! (Epsilon: {self.epsilon:.2f})")
 
     def load_model(self):
-        """Загружает память из прошлого запуска, если она есть"""
         if os.path.exists(self.model_path):
             checkpoint = torch.load(self.model_path)
             self.model.load_state_dict(checkpoint['model_state_dict'])
@@ -130,7 +123,7 @@ class HybridPressureAgent:
 
     def replay(self, batch_size):
         if len(self.memory) < batch_size:
-            return None  # Возвращаем None, если еще мало опыта
+            return None
 
         minibatch = random.sample(self.memory, batch_size)
         total_loss = 0
@@ -153,12 +146,10 @@ class HybridPressureAgent:
         if self.epsilon > self.epsilon_min:
             self.epsilon *= self.epsilon_decay
 
-        return total_loss / batch_size  # Возвращаем среднюю ошибку для графиков
+        return total_loss / batch_size
 
 
-# ==========================================
-# 3. ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
-# ==========================================
+
 def get_hybrid_state():
     state = []
     for edge in IN_EDGES.values(): state.append(traci.edge.getLastStepHaltingNumber(edge))
@@ -195,9 +186,7 @@ def get_buses_on_edge(edge_id):
     return len(buses), "; ".join([f"{b}:[{len(traci.vehicle.getRoute(b))} edges]" for b in buses])
 
 
-# ==========================================
-# 4. ОСНОВНОЙ ЦИКЛ СИМУЛЯЦИИ
-# ==========================================
+
 def run_simulation():
     traci.start([SUMO_BINARY, "-c", str(SUMO_CFG)])
 
@@ -210,7 +199,6 @@ def run_simulation():
 
     LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
 
-    # Открываем два лог-файла
     f_traf = open(str(LOG_PATH), "w", newline="")
     f_rl = open(str(RL_LOG_PATH), "w", newline="")
 
@@ -245,7 +233,6 @@ def run_simulation():
                 agent.remember(current_state, last_action, reward, next_state)
                 loss = agent.replay(batch_size=32)
 
-                # Логируем прогресс ИИ (каждый раз, когда он принимает решение)
                 step_counter += 1
                 loss_val = loss if loss is not None else 0
                 writer_rl.writerow([step_counter, reward, loss_val, agent.epsilon])
@@ -263,7 +250,6 @@ def run_simulation():
                 last_switch_time = t
                 print(f"[{datetime.timedelta(seconds=t)}c] ИИ переключает на фазу {desired_phase}. Epsilon: {agent.epsilon:.3f}")
 
-        # Сбор метрик трафика (каждые 10 секунд, чтобы не перегружать лог)
         if t % 10 == 0:
             for direction, edges in EDGES.items():
                 q_total, v_total, s_sum, b_total, total_lanes = 0, 0, 0, 0, 0
@@ -288,9 +274,6 @@ def run_simulation():
     print("Симуляция завершена. Логи сохранены.")
 
 
-# ==========================================
-# 5. АНАЛИЗ РЕЗУЛЬТАТОВ (Дашборд обучения)
-# ==========================================
 def analyze_results():
     try:
         df_traf = pd.read_csv(str(LOG_PATH))
@@ -307,8 +290,7 @@ def analyze_results():
         axes[0].set_ylabel("Кол-во машин")
         axes[0].grid(True)
 
-        # График 2: Полученная Награда (Сглаженная)
-        # Сглаживаем награду (скользящее среднее), чтобы видеть тренд, а не скачки
+
         df_rl['reward_smoothed'] = df_rl['reward'].rolling(window=20, min_periods=1).mean()
         axes[1].plot(df_rl['step'], df_rl['reward'], alpha=0.3, color='red', label='Сырая награда')
         axes[1].plot(df_rl['step'], df_rl['reward_smoothed'], color='darkred', linewidth=2, label='Тренд (MA 20)')
@@ -317,7 +299,7 @@ def analyze_results():
         axes[1].legend()
         axes[1].grid(True)
 
-        # График 3: Падение Эпсилона (Исследование -> Использование)
+
         axes[2].plot(df_rl['step'], df_rl['epsilon'], color='green', linewidth=2)
         axes[2].set_title("3. Исследование среды (Epsilon Decay)")
         axes[2].set_ylabel("Уровень случайности действий")
@@ -338,7 +320,7 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print("Прервано пользователем")
         traci.close()
-        analyze_results()  # Показываем графики, даже если прервали по Ctrl+C
+        analyze_results()
     except traci.exceptions.FatalTraCIError as e:
         print(f"TraCI Error: {e}")
         traci.close()
