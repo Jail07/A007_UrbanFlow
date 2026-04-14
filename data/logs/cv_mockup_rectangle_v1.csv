@@ -1,0 +1,184 @@
+timestamp,total_vehicles,lane_left,lane_center,lane_right,vehicles_details
+2026-04-14 14:37:13,0,0,0,0,
+2026-04-14 14:37:14,0,0,0,0,
+2026-04-14 14:37:14,1,0,1,0,ID_1(box)->lane_center
+2026-04-14 14:37:14,1,0,1,0,ID_1(box)->lane_center
+2026-04-14 14:37:14,1,0,1,0,ID_1(box)->lane_center
+2026-04-14 14:37:14,1,0,1,0,ID_1(box)->lane_center
+2026-04-14 14:37:14,1,0,1,0,ID_1(box)->lane_center
+2026-04-14 14:37:14,1,0,1,0,ID_1(box)->lane_center
+2026-04-14 14:37:14,1,0,1,0,ID_1(box)->lane_center
+2026-04-14 14:37:14,1,0,1,0,ID_1(box)->lane_center
+2026-04-14 14:37:14,1,0,1,0,ID_1(box)->lane_center
+2026-04-14 14:37:14,1,0,1,0,ID_1(box)->lane_center
+2026-04-14 14:37:14,1,0,1,0,ID_1(box)->lane_center
+2026-04-14 14:37:14,1,0,1,0,ID_1(box)->lane_center
+2026-04-14 14:37:14,1,0,1,0,ID_1(box)->lane_center
+2026-04-14 14:37:14,1,0,1,0,ID_1(box)->lane_center
+2026-04-14 14:37:15,1,0,1,0,ID_1(box)->lane_center
+2026-04-14 14:37:15,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:15,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:15,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:15,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:15,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:15,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:15,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:15,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:15,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:15,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:15,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:15,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:15,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:15,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:15,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:19,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:19,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:19,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:19,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:19,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:19,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:19,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:19,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:19,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:19,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:19,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:19,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:20,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:20,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:20,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:20,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:20,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:20,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:20,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:20,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:20,2,1,1,0,ID_1(box)->lane_center; ID_13(box)->lane_left
+2026-04-14 14:37:20,3,1,2,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center
+2026-04-14 14:37:20,4,1,2,1,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_42(box)->lane_right
+2026-04-14 14:37:20,4,1,2,1,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_42(box)->lane_right
+2026-04-14 14:37:20,4,1,2,1,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_42(box)->lane_right
+2026-04-14 14:37:20,4,1,2,1,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_42(box)->lane_right
+2026-04-14 14:37:20,4,1,2,1,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_42(box)->lane_right
+2026-04-14 14:37:21,4,1,2,1,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_42(box)->lane_right
+2026-04-14 14:37:21,4,1,2,1,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_42(box)->lane_right
+2026-04-14 14:37:21,4,1,2,1,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_42(box)->lane_right
+2026-04-14 14:37:21,4,1,2,1,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_42(box)->lane_right
+2026-04-14 14:37:21,4,1,2,1,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_42(box)->lane_right
+2026-04-14 14:37:21,4,1,2,1,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_42(box)->lane_right
+2026-04-14 14:37:21,4,1,2,1,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_42(box)->lane_right
+2026-04-14 14:37:21,4,1,2,1,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_42(box)->lane_right
+2026-04-14 14:37:21,4,1,2,1,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_42(box)->lane_right
+2026-04-14 14:37:21,4,1,2,1,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_42(box)->lane_right
+2026-04-14 14:37:21,4,1,2,1,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_42(box)->lane_right
+2026-04-14 14:37:21,4,1,2,1,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_42(box)->lane_right
+2026-04-14 14:37:21,4,1,2,1,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_42(box)->lane_right
+2026-04-14 14:37:21,4,1,2,1,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_42(box)->lane_right
+2026-04-14 14:37:21,4,1,2,1,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_42(box)->lane_right
+2026-04-14 14:37:21,4,1,2,1,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_42(box)->lane_right
+2026-04-14 14:37:22,4,1,2,1,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_42(box)->lane_right
+2026-04-14 14:37:22,4,1,2,1,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_42(box)->lane_right
+2026-04-14 14:37:22,4,1,2,1,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_42(box)->lane_right
+2026-04-14 14:37:22,4,1,2,1,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_42(box)->lane_right
+2026-04-14 14:37:22,4,1,2,1,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_42(box)->lane_right
+2026-04-14 14:37:22,4,1,2,1,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_42(box)->lane_right
+2026-04-14 14:37:22,4,1,2,1,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_42(box)->lane_right
+2026-04-14 14:37:22,4,1,2,1,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_42(box)->lane_right
+2026-04-14 14:37:22,5,2,2,1,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_42(box)->lane_right; ID_50(box)->lane_left
+2026-04-14 14:37:22,5,2,2,1,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_42(box)->lane_right; ID_50(box)->lane_left
+2026-04-14 14:37:22,5,2,2,1,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_42(box)->lane_right; ID_50(box)->lane_left
+2026-04-14 14:37:22,4,2,2,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_50(box)->lane_left
+2026-04-14 14:37:22,4,2,2,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_50(box)->lane_left
+2026-04-14 14:37:22,4,2,2,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_50(box)->lane_left
+2026-04-14 14:37:22,4,2,2,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_50(box)->lane_left
+2026-04-14 14:37:22,4,2,2,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_50(box)->lane_left
+2026-04-14 14:37:23,4,2,2,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_50(box)->lane_left
+2026-04-14 14:37:23,4,2,2,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_50(box)->lane_left
+2026-04-14 14:37:23,4,2,2,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_50(box)->lane_left
+2026-04-14 14:37:23,4,2,2,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_50(box)->lane_left
+2026-04-14 14:37:23,4,2,2,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_50(box)->lane_left
+2026-04-14 14:37:23,4,2,2,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_50(box)->lane_left
+2026-04-14 14:37:23,4,2,2,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_50(box)->lane_left
+2026-04-14 14:37:23,4,2,2,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_50(box)->lane_left
+2026-04-14 14:37:23,4,2,2,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_50(box)->lane_left
+2026-04-14 14:37:23,4,2,2,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_50(box)->lane_left
+2026-04-14 14:37:23,4,2,2,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_50(box)->lane_left
+2026-04-14 14:37:23,4,2,2,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_50(box)->lane_left
+2026-04-14 14:37:23,3,1,2,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center
+2026-04-14 14:37:23,3,1,2,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center
+2026-04-14 14:37:23,4,2,2,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_56(box)->lane_left
+2026-04-14 14:37:24,4,2,2,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_56(box)->lane_left
+2026-04-14 14:37:24,4,2,2,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_56(box)->lane_left
+2026-04-14 14:37:24,4,2,2,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_56(box)->lane_left
+2026-04-14 14:37:24,4,2,2,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_56(box)->lane_left
+2026-04-14 14:37:24,5,2,3,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_56(box)->lane_left; ID_59(box)->lane_center
+2026-04-14 14:37:24,5,2,3,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_56(box)->lane_left; ID_59(box)->lane_center
+2026-04-14 14:37:24,5,2,3,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_56(box)->lane_left; ID_59(box)->lane_center
+2026-04-14 14:37:24,5,2,3,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_56(box)->lane_left; ID_59(box)->lane_center
+2026-04-14 14:37:24,5,2,3,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_56(box)->lane_left; ID_59(box)->lane_center
+2026-04-14 14:37:24,5,2,3,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_56(box)->lane_left; ID_59(box)->lane_center
+2026-04-14 14:37:24,5,2,3,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_56(box)->lane_left; ID_59(box)->lane_center
+2026-04-14 14:37:24,5,2,3,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_56(box)->lane_left; ID_59(box)->lane_center
+2026-04-14 14:37:24,5,2,3,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_56(box)->lane_left; ID_59(box)->lane_center
+2026-04-14 14:37:24,5,2,3,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_56(box)->lane_left; ID_59(box)->lane_center
+2026-04-14 14:37:24,5,2,3,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_56(box)->lane_left; ID_59(box)->lane_center
+2026-04-14 14:37:25,5,2,3,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_56(box)->lane_left; ID_59(box)->lane_center
+2026-04-14 14:37:25,5,2,3,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_56(box)->lane_left; ID_59(box)->lane_center
+2026-04-14 14:37:25,5,2,3,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_56(box)->lane_left; ID_59(box)->lane_center
+2026-04-14 14:37:25,5,2,3,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_56(box)->lane_left; ID_59(box)->lane_center
+2026-04-14 14:37:25,5,2,3,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_56(box)->lane_left; ID_59(box)->lane_center
+2026-04-14 14:37:25,5,2,3,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_56(box)->lane_left; ID_59(box)->lane_center
+2026-04-14 14:37:25,5,2,3,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_56(box)->lane_left; ID_59(box)->lane_center
+2026-04-14 14:37:25,5,2,3,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_56(box)->lane_left; ID_59(box)->lane_center
+2026-04-14 14:37:25,5,2,3,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_56(box)->lane_left; ID_59(box)->lane_center
+2026-04-14 14:37:25,5,2,3,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_56(box)->lane_left; ID_59(box)->lane_center
+2026-04-14 14:37:25,5,2,3,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_56(box)->lane_left; ID_59(box)->lane_center
+2026-04-14 14:37:25,5,2,3,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_56(box)->lane_left; ID_59(box)->lane_center
+2026-04-14 14:37:25,5,2,3,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_56(box)->lane_left; ID_59(box)->lane_center
+2026-04-14 14:37:25,5,2,3,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_56(box)->lane_left; ID_59(box)->lane_center
+2026-04-14 14:37:25,5,2,3,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_56(box)->lane_left; ID_59(box)->lane_center
+2026-04-14 14:37:25,5,2,3,0,ID_1(box)->lane_center; ID_13(box)->lane_left; ID_40(box)->lane_center; ID_56(box)->lane_left; ID_59(box)->lane_center
+2026-04-14 14:37:25,4,1,3,0,ID_1(box)->lane_center; ID_40(box)->lane_center; ID_56(box)->lane_left; ID_59(box)->lane_center
+2026-04-14 14:37:26,4,1,3,0,ID_1(box)->lane_center; ID_40(box)->lane_center; ID_56(box)->lane_left; ID_59(box)->lane_center
+2026-04-14 14:37:26,3,0,3,0,ID_1(box)->lane_center; ID_40(box)->lane_center; ID_59(box)->lane_center
+2026-04-14 14:37:26,3,0,3,0,ID_1(box)->lane_center; ID_40(box)->lane_center; ID_59(box)->lane_center
+2026-04-14 14:37:26,3,0,3,0,ID_1(box)->lane_center; ID_40(box)->lane_center; ID_59(box)->lane_center
+2026-04-14 14:37:26,3,0,3,0,ID_1(box)->lane_center; ID_40(box)->lane_center; ID_59(box)->lane_center
+2026-04-14 14:37:26,3,0,3,0,ID_1(box)->lane_center; ID_40(box)->lane_center; ID_59(box)->lane_center
+2026-04-14 14:37:26,3,0,3,0,ID_1(box)->lane_center; ID_40(box)->lane_center; ID_59(box)->lane_center
+2026-04-14 14:37:26,3,0,3,0,ID_1(box)->lane_center; ID_40(box)->lane_center; ID_59(box)->lane_center
+2026-04-14 14:37:26,4,0,3,1,ID_1(box)->lane_center; ID_40(box)->lane_center; ID_59(box)->lane_center; ID_79(box)->lane_right
+2026-04-14 14:37:26,4,0,3,1,ID_1(box)->lane_center; ID_40(box)->lane_center; ID_59(box)->lane_center; ID_79(box)->lane_right
+2026-04-14 14:37:26,3,0,2,1,ID_1(box)->lane_center; ID_59(box)->lane_center; ID_79(box)->lane_right
+2026-04-14 14:37:26,2,0,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right
+2026-04-14 14:37:26,2,0,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right
+2026-04-14 14:37:26,2,0,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right
+2026-04-14 14:37:26,2,0,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right
+2026-04-14 14:37:27,2,0,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right
+2026-04-14 14:37:27,3,1,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right; ID_83(box)->lane_left
+2026-04-14 14:37:27,3,1,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right; ID_83(box)->lane_left
+2026-04-14 14:37:27,3,1,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right; ID_83(box)->lane_left
+2026-04-14 14:37:27,3,1,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right; ID_83(box)->lane_left
+2026-04-14 14:37:27,3,1,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right; ID_83(box)->lane_left
+2026-04-14 14:37:27,3,1,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right; ID_83(box)->lane_left
+2026-04-14 14:37:27,3,1,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right; ID_83(box)->lane_left
+2026-04-14 14:37:27,3,1,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right; ID_83(box)->lane_left
+2026-04-14 14:37:27,3,1,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right; ID_83(box)->lane_left
+2026-04-14 14:37:27,3,1,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right; ID_83(box)->lane_left
+2026-04-14 14:37:27,3,1,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right; ID_83(box)->lane_left
+2026-04-14 14:37:27,3,1,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right; ID_83(box)->lane_left
+2026-04-14 14:37:27,3,1,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right; ID_83(box)->lane_left
+2026-04-14 14:37:27,3,1,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right; ID_83(box)->lane_left
+2026-04-14 14:37:27,3,1,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right; ID_83(box)->lane_left
+2026-04-14 14:37:27,3,1,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right; ID_83(box)->lane_left
+2026-04-14 14:37:28,3,1,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right; ID_83(box)->lane_left
+2026-04-14 14:37:28,3,1,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right; ID_83(box)->lane_left
+2026-04-14 14:37:28,3,1,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right; ID_83(box)->lane_left
+2026-04-14 14:37:28,3,1,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right; ID_83(box)->lane_left
+2026-04-14 14:37:28,3,1,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right; ID_83(box)->lane_left
+2026-04-14 14:37:28,3,1,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right; ID_83(box)->lane_left
+2026-04-14 14:37:28,3,1,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right; ID_83(box)->lane_left
+2026-04-14 14:37:28,3,1,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right; ID_83(box)->lane_left
+2026-04-14 14:37:28,3,1,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right; ID_83(box)->lane_left
+2026-04-14 14:37:28,3,1,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right; ID_83(box)->lane_left
+2026-04-14 14:37:28,3,1,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right; ID_83(box)->lane_left
+2026-04-14 14:37:28,3,1,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right; ID_83(box)->lane_left
+2026-04-14 14:37:28,3,1,1,1,ID_1(box)->lane_center; ID_79(box)->lane_right; ID_83(box)->lane_left

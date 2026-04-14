@@ -1,0 +1,48 @@
+timestamp,total_vehicles,lane_left,lane_center,lane_right,vehicles_details
+2026-04-14 14:07:22,0,0,0,0,
+2026-04-14 14:07:22,0,0,0,0,
+2026-04-14 14:07:22,0,0,0,0,
+2026-04-14 14:07:22,0,0,0,0,
+2026-04-14 14:07:22,0,0,0,0,
+2026-04-14 14:07:22,0,0,0,0,
+2026-04-14 14:07:22,0,0,0,0,
+2026-04-14 14:07:22,0,0,0,0,
+2026-04-14 14:07:23,0,0,0,0,
+2026-04-14 14:07:23,0,0,0,0,
+2026-04-14 14:07:23,0,0,0,0,
+2026-04-14 14:07:23,0,0,0,0,
+2026-04-14 14:07:23,0,0,0,0,
+2026-04-14 14:07:23,0,0,0,0,
+2026-04-14 14:07:23,0,0,0,0,
+2026-04-14 14:07:23,0,0,0,0,
+2026-04-14 14:07:23,0,0,0,0,
+2026-04-14 14:07:23,0,0,0,0,
+2026-04-14 14:07:23,0,0,0,0,
+2026-04-14 14:07:23,0,0,0,0,
+2026-04-14 14:07:23,1,0,1,0,ID_9(car)->lane_center
+2026-04-14 14:07:23,1,0,1,0,ID_9(car)->lane_center
+2026-04-14 14:07:23,1,0,1,0,ID_9(car)->lane_center
+2026-04-14 14:07:24,1,0,1,0,ID_9(car)->lane_center
+2026-04-14 14:07:24,1,0,1,0,ID_9(car)->lane_center
+2026-04-14 14:07:24,1,0,1,0,ID_9(car)->lane_center
+2026-04-14 14:07:24,1,0,1,0,ID_9(car)->lane_center
+2026-04-14 14:07:24,1,0,1,0,ID_9(car)->lane_center
+2026-04-14 14:07:24,1,0,1,0,ID_9(car)->lane_center
+2026-04-14 14:07:24,2,0,1,1,ID_9(car)->lane_center; ID_11(car)->lane_right
+2026-04-14 14:07:24,2,0,1,1,ID_9(car)->lane_center; ID_11(car)->lane_right
+2026-04-14 14:07:24,2,0,1,1,ID_9(car)->lane_center; ID_11(car)->lane_right
+2026-04-14 14:07:24,2,0,1,1,ID_9(car)->lane_center; ID_11(car)->lane_right
+2026-04-14 14:07:24,2,0,1,1,ID_9(car)->lane_center; ID_11(car)->lane_right
+2026-04-14 14:07:24,2,0,1,1,ID_9(car)->lane_center; ID_11(car)->lane_right
+2026-04-14 14:07:25,2,0,1,1,ID_9(car)->lane_center; ID_11(car)->lane_right
+2026-04-14 14:07:25,2,0,1,1,ID_9(car)->lane_center; ID_11(car)->lane_right
+2026-04-14 14:07:25,2,0,1,1,ID_9(car)->lane_center; ID_11(car)->lane_right
+2026-04-14 14:07:25,2,0,1,1,ID_9(car)->lane_center; ID_11(car)->lane_right
+2026-04-14 14:07:25,2,0,1,1,ID_9(car)->lane_center; ID_11(car)->lane_right
+2026-04-14 14:07:25,2,0,1,1,ID_9(car)->lane_center; ID_11(car)->lane_right
+2026-04-14 14:07:25,3,0,1,2,ID_9(car)->lane_center; ID_11(car)->lane_right; ID_17(car)->lane_right
+2026-04-14 14:07:25,3,0,1,2,ID_9(car)->lane_center; ID_11(car)->lane_right; ID_17(car)->lane_right
+2026-04-14 14:07:25,3,0,1,2,ID_9(car)->lane_center; ID_11(car)->lane_right; ID_17(car)->lane_right
+2026-04-14 14:07:25,3,0,1,2,ID_9(car)->lane_center; ID_11(car)->lane_right; ID_17(car)->lane_right
+2026-04-14 14:07:25,3,0,1,2,ID_9(car)->lane_center; ID_11(car)->lane_right; ID_17(car)->lane_right
+2026-04-14 14:07:26,3,0,1,2,ID_9(car)->lane_center; ID_11(car)->lane_right; ID_17(car)->lane_right
