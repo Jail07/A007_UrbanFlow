@@ -6,7 +6,7 @@ import csv
 
 from ultralytics import YOLO
 from deep_sort_realtime.deepsort_tracker import DeepSort
-from src.constants.config import VIDEO_PATH, CAMERA_CONFIG_JSON_PATH_v1, LOG_FILE_PATH_V1
+from src.constants.config import VIDEO_PATH, CAMERA_CONFIG_JSON_PATH_v1, LOG_FILE_PATH_V1, YOLOV8_CFG_PATH
 
 
 def load_lanes_config(config_path, intersection_id, camera_id):
@@ -24,7 +24,7 @@ def load_lanes_config(config_path, intersection_id, camera_id):
     return lanes
 
 
-model = YOLO("yolov8s.pt")
+model = YOLO(YOLOV8_CFG_PATH)
 tracker = DeepSort(max_age=30)
 cap = cv2.VideoCapture(VIDEO_PATH)
 
