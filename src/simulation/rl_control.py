@@ -23,38 +23,39 @@ LOG_PATH = LOGS_DIR / "urbanflow_detailed_log.csv"
 RL_LOG_PATH = LOGS_DIR / "rl_training_log.csv"
 
 SUMO_BINARY = "sumo-gui"
-# TLS_ID = "244500423"
-#
-# EDGES = {
-#     "W": ["-622102031#6", "622102031#6"],
-#     "N": ["-51095930#1", "51095930#1"],
-#     "E": ["-620932850#1", "620932850#1"],
-#     "S": ["-580760138#5", "580760138#5"]
-# }
-#
-# IN_EDGES = {"W": "622102031#6", "N": "-51095930#1", "E": "-620932850#1", "S": "580760138#5"}
-# OUT_EDGES = {"W": "-622102031#6", "N": "51095930#1", "E": "620932850#1", "S": "-580760138#5"}
 
 INTERSECTIONS = {
     "Vefa_244500423": {
         "id": "244500423",
         "in_edges": ["-51095930#1", "622102031#6", "-620932850#1", "580760138#5"],
         "out_edges": ["51095930#1", "-622102031#6", "620932850#1", "-580760138#5"],
-        "phases": {"NS_GREEN": 0, "NS_YELLOW": 1, "EW_GREEN": 2, "EW_YELLOW": 3}
+        "green_phases": [0, 2],           # ИИ выбирает между 0 и 2
+        "yellow_phases": {0: 1, 2: 3}     # Уходим с 0 -> желтый 1. Уходим с 2 -> желтый 3.
     },
     "Kulatov_244500424": {
         "id": "244500424",
         "in_edges": ["-186475564#4", "25684557#4", "186475564#1", "477271462#4"],
         "out_edges": ["186475564#4", "-25684557#4", "-186475564#1", "-477271462#4"],
-        "phases": {"NS_GREEN": 0, "NS_YELLOW": 1, "EW_GREEN": 2, "EW_YELLOW": 3}
+        "green_phases": [0, 2, 4],        # У ИИ теперь 3 варианта действий (Action size = 3)
+        "yellow_phases": {0: 1, 2: 3, 4: 5}
+    },
+    "Muka_280015410": {
+        "id": "280015410",
+        "in_edges": ["1075767203#0", "-477271462#1", None, "192987238#2"],
+        "out_edges": ["-1075767203#0", "477271462#1", "49830666#1", "-192987238#2"],
+        "green_phases": [0, 2, 4],        # Тоже 3 варианта
+        "yellow_phases": {0: 1, 2: 3, 4: 5}
+    },
+    "Gorko_280015414": {
+        "id": "280015414",
+        "in_edges": ["49830666#6", "620932850#2", None, "-829563410#1"],
+        "out_edges": [None, "-620932850#2", "277523407#1", "829563410#1"],
+        "green_phases": [0, 2],
+        "yellow_phases": {0: 1, 2: 3}
     }
 }
 
 
-# PHASE_NS_GREEN = 0
-# PHASE_NS_YELLOW = 1
-# PHASE_EW_GREEN = 2
-# PHASE_EW_YELLOW = 3
 
 YELLOW_DURATION = 4
 MIN_GREEN_TIME = 15
@@ -157,16 +158,16 @@ def get_hybrid_state(intersection_data):
     tls_id = intersection_data["id"]
 
     state = []
+    # Если edge есть - берем данные, если None - пишем 0
     for edge in in_edges:
-        state.append(traci.edge.getLastStepHaltingNumber(edge))
+        state.append(traci.edge.getLastStepHaltingNumber(edge) if edge else 0)
     for edge in out_edges:
-        state.append(traci.edge.getLastStepHaltingNumber(edge))
+        state.append(traci.edge.getLastStepHaltingNumber(edge) if edge else 0)
     for edge in in_edges:
-        state.append(traci.edge.getWaitingTime(edge))
+        state.append(traci.edge.getWaitingTime(edge) if edge else 0)
 
     state.append(traci.trafficlight.getPhase(tls_id))
     return np.array(state)
-
 
 def get_hybrid_reward(intersection_data):
     alpha = 1.0
@@ -174,11 +175,11 @@ def get_hybrid_reward(intersection_data):
     in_edges = intersection_data["in_edges"]
     out_edges = intersection_data["out_edges"]
 
-    in_queue = sum([traci.edge.getLastStepHaltingNumber(e) for e in in_edges])
-    out_queue = sum([traci.edge.getLastStepHaltingNumber(e) for e in out_edges])
+    in_queue = sum([traci.edge.getLastStepHaltingNumber(e) for e in in_edges if e])
+    out_queue = sum([traci.edge.getLastStepHaltingNumber(e) for e in out_edges if e])
     pressure = abs(in_queue - out_queue)
 
-    total_wait_time = sum([traci.edge.getWaitingTime(e) for e in in_edges])
+    total_wait_time = sum([traci.edge.getWaitingTime(e) for e in in_edges if e])
 
     return - (alpha * pressure + beta * total_wait_time)
 
@@ -199,10 +200,6 @@ def get_buses_on_edge(edge_id):
     buses = [v for v in vehicles if traci.vehicle.getVehicleClass(v) == "bus"]
     return len(buses), "; ".join([f"{b}:[{len(traci.vehicle.getRoute(b))} edges]" for b in buses])
 
-
-import datetime  # Убедитесь, что импортировали
-
-
 def run_simulation():
     traci.start([SUMO_BINARY, "-c", str(SUMO_CFG)])
 
@@ -210,11 +207,15 @@ def run_simulation():
     intersection_states = {}
 
     for name, data in INTERSECTIONS.items():
-        agents[name] = HybridPressureAgent(name=name, state_size=13, action_size=2)
+        num_actions = len(data["green_phases"])
+
+        agents[name] = HybridPressureAgent(name=name, state_size=13, action_size=num_actions)
+
         try:
             agents[name].load_model()
-        except:
-            pass
+        except Exception as e:
+
+            print(f"[{name}] Старая память не подошла или отсутствует. Начинаем с нуля.")
 
         # Выделяем каждому перекрестку личные переменные состояния
         intersection_states[name] = {
@@ -247,21 +248,24 @@ def run_simulation():
             agent = agents[name]
             st = intersection_states[name]
             tls_id = data["id"]
-            p_ns_g = data["phases"]["NS_GREEN"]
-            p_ew_g = data["phases"]["EW_GREEN"]
-            p_ns_y = data["phases"]["NS_YELLOW"]
-            p_ew_y = data["phases"]["EW_YELLOW"]
+
+            green_phases = data["green_phases"]
+            yellow_dict = data["yellow_phases"]
 
             current_phase = traci.trafficlight.getPhase(tls_id)
 
-            if current_phase in [p_ns_y, p_ew_y]:
+            # 1. Если сейчас горит ЖЕЛТЫЙ
+            if current_phase in yellow_dict.values():
                 if t - st["last_switch_time"] >= YELLOW_DURATION:
+                    # ПРЕДОХРАНИТЕЛЬ: Если SUMO сам включил желтый, а ИИ не был готов
                     if st["target_phase"] is None:
-                        st["target_phase"] = p_ew_g if current_phase == p_ns_y else p_ns_g
+                        st["target_phase"] = green_phases[0]  # Берем первую зеленую фазу для спасения
+
                     traci.trafficlight.setPhase(tls_id, st["target_phase"])
                     st["last_switch_time"] = t
 
-            elif t - st["last_switch_time"] >= MIN_GREEN_TIME and current_phase in [p_ns_g, p_ew_g]:
+            # 2. Если сейчас горит ЗЕЛЕНЫЙ
+            elif t - st["last_switch_time"] >= MIN_GREEN_TIME and current_phase in green_phases:
 
                 if st["last_action"] is not None:
                     reward = get_hybrid_reward(data)
@@ -274,18 +278,24 @@ def run_simulation():
                     writer_rl.writerow([step_counter, name, reward, loss_val, agent.epsilon])
 
                 st["current_state"] = get_hybrid_state(data)
-                action = agent.act(st["current_state"])
-                st["last_action"] = action
 
-                desired_phase = p_ns_g if action == 0 else p_ew_g
+                action_index = agent.act(st["current_state"])
+                st["last_action"] = action_index
+                desired_phase = green_phases[action_index]
 
                 if desired_phase != current_phase:
                     st["target_phase"] = desired_phase
-                    yellow_phase = p_ns_y if current_phase == p_ns_g else p_ew_y
+                    yellow_phase = yellow_dict[current_phase]
                     traci.trafficlight.setPhase(tls_id, yellow_phase)
                     st["last_switch_time"] = t
                     print(
                         f"[{datetime.timedelta(seconds=t)}] ИИ ({name}) переключает на фазу {desired_phase}. Epsilon: {agent.epsilon:.3f}")
+                else:
+                    st["last_switch_time"] = t
+                    st["target_phase"] = current_phase  # Запоминаем, что мы хотели остаться здесь
+                    # ЯВНЫЙ ПРИКАЗ SUMO: "Оставь эту фазу, я перехватываю управление!"
+                    traci.trafficlight.setPhase(tls_id, current_phase)
+                    print(f"[{datetime.timedelta(seconds=t)}] ИИ ({name}) продлевает фазу {current_phase}.")
 
         if t % 10 == 0:
             for name, data in INTERSECTIONS.items():
@@ -294,6 +304,8 @@ def run_simulation():
                 all_lane_configs = []
 
                 for e in in_edges:
+                    if e == None:
+                        continue
                     q_total += traci.edge.getLastStepHaltingNumber(e)
                     v_total += traci.edge.getLastStepVehicleNumber(e)
                     s_sum += traci.edge.getLastStepMeanSpeed(e)

@@ -1,118 +1,103 @@
 import traci
 import csv
+import pandas as pd
 from pathlib import Path
+import datetime
 
-TLS_ID = "244500423"
-SUMO_BINARY = "sumo"
+# --- НАСТРОЙКИ ---
 BASE_DIR = Path(__file__).resolve().parents[2]
-SUMO_CFG = BASE_DIR / "data/routes/sumo.sumocfg"
+DATA_DIR = BASE_DIR / "data"
+LOGS_DIR = DATA_DIR / "logs"
+SUMO_CFG = "data/routes/scenarios_04/sumo.sumocfg"
 
-LOG_DIR = Path("experiments/exp_with_tl")
-LOG_DIR.mkdir(exist_ok=True)
+# Файл, куда сохраним базовые результаты
+FIXED_LOG_PATH = LOGS_DIR / "log_fixed.csv"
+SUMO_BINARY = "sumo-gui"
+MAX_SIMULATION_STEPS = 86400
 
-EXPERIMENTS = [
-    (20,10,3),
-    (25,10,3),
-    (30,10,3),
-    (20,15,3),
-    (25,15,3),
-    (30,15,3),
-    (35,15,3),
-    (20,20,3),
-    (25,20,3),
-    (30,20,3),
-    (35,20,3),
-    (40,20,3),
-    (20,25,3),
-    (25,25,3),
-    (30,25,3),
-    (35,25,3),
-    (40,25,3),
-    (30,30,3),
-    (35,30,3),
-    (40,30,3)
-]
-
-def apply_tls_logic(green_main, green_side, yellow):
-
-    logic = traci.trafficlight.getAllProgramLogics(TLS_ID)[0]
-
-    phases = logic.phases
-
-    new_phases = []
-
-    for i, p in enumerate(phases):
-
-        duration = p.duration
-
-        if i == 0:
-            duration = green_main
-        elif i == 1:
-            duration = yellow
-        elif i == 2:
-            duration = green_side
-        elif i == 3:
-            duration = yellow
-
-        new_phases.append(
-            traci.trafficlight.Phase(duration=duration, state=p.state)
-        )
-
-    logic.phases = new_phases
-
-    traci.trafficlight.setProgramLogic(TLS_ID, logic)
+# Те же самые перекрестки, что и у ИИ
+INTERSECTIONS = {
+    "Vefa_244500423": {
+        "id": "244500423",
+        "in_edges": ["-51095930#1", "622102031#6", "-620932850#1", "580760138#5"]
+    },
+    "Kulatov_244500424": {
+        "id": "244500424",
+        "in_edges": ["-186475564#4", "25684557#4", "186475564#1", "477271462#4"]
+    }
+}
 
 
-def run_experiment(exp_id, green_main, green_side, yellow):
+def get_lane_info(edge_id):
+    num_lanes = traci.edge.getLaneNumber(edge_id)
+    lane_data = []
+    for i in range(num_lanes):
+        lane_id = f"{edge_id}_{i}"
+        links = traci.lane.getLinks(lane_id)
+        directions = "".join(sorted(set(link[6] for link in links)))
+        lane_data.append(f"L{i}({directions})")
+    return num_lanes, "|".join(lane_data)
 
-    log_path = LOG_DIR / f"exp_{exp_id}.csv"
 
+def run_fixed_simulation():
+    # Запускаем SUMO
     traci.start([SUMO_BINARY, "-c", str(SUMO_CFG)])
 
-    apply_tls_logic(green_main, green_side, yellow)
+    # Подготавливаем файл для записи
+    LOGS_DIR.mkdir(parents=True, exist_ok=True)
+    f_traf = open(str(FIXED_LOG_PATH), "w", newline="")
+    writer_traf = csv.writer(f_traf)
 
-    with open(log_path, "w", newline="") as f:
+    # Заголовок ТОЧНО ТАКОЙ ЖЕ, как в скрипте с ИИ
+    writer_traf.writerow(
+        ["time", "intersection", "queue", "vehicles", "mean_speed", "lane_count", "lane_configs", "bus_count",
+         "bus_routes"]
+    )
 
-        writer = csv.writer(f)
-        writer.writerow(["time","vehicles","queue","speed"])
+    print("Симуляция фиксированных светофоров (Baseline) запущена...")
+    t = 0
 
-        while traci.simulation.getMinExpectedNumber() > 0:
+    # Главный цикл
+    while traci.simulation.getMinExpectedNumber() > 0 and t < MAX_SIMULATION_STEPS:
+        # Продвигаем время. SUMO САМ переключает светофоры по своим внутренним таймерам
+        traci.simulationStep()
+        t = int(traci.simulation.getTime())
 
-            traci.simulationStep()
+        # Каждые 10 секунд собираем статистику
+        if t % 10 == 0:
+            for name, data in INTERSECTIONS.items():
+                in_edges = data["in_edges"]
+                q_total, v_total, s_sum, total_lanes = 0, 0, 0, 0
+                all_lane_configs = []
 
-            t = traci.simulation.getTime()
+                for e in in_edges:
+                    q_total += traci.edge.getLastStepHaltingNumber(e)
+                    v_total += traci.edge.getLastStepVehicleNumber(e)
+                    s_sum += traci.edge.getLastStepMeanSpeed(e)
 
-            queue = 0
-            vehicles = 0
-            speed = 0
+                    n_lanes, l_cfg = get_lane_info(e)
+                    total_lanes += n_lanes
+                    all_lane_configs.append(l_cfg)
 
-            edges = [
-                "-622102031#6",
-                "622102031#6",
-                "-51095930#1",
-                "51095930#1"
-            ]
+                avg_speed = round((s_sum / len(in_edges)) * 3.6, 2) if v_total > 0 else 0
 
-            for e in edges:
-                queue += traci.edge.getLastStepHaltingNumber(e)
-                vehicles += traci.edge.getLastStepVehicleNumber(e)
-                speed += traci.edge.getLastStepMeanSpeed(e)
+                # Записываем данные в лог
+                writer_traf.writerow(
+                    [t, name, q_total, v_total, avg_speed, total_lanes, " / ".join(all_lane_configs), 0, ""]
+                )
 
-            writer.writerow([t,vehicles,queue,speed])
+            # Просто для красоты выводим время в консоль каждую 1000-ю секунду, чтобы видеть, что скрипт не завис
+            if t % 1000 == 0:
+                print(f"Прошло времени: {datetime.timedelta(seconds=t)}")
 
+    f_traf.close()
     traci.close()
-
-
-def main():
-
-    for i, params in enumerate(EXPERIMENTS):
-
-        green_main, green_side, yellow = params
-
-        print(f"experiment {i+1}/20  main={green_main} side={green_side}")
-
-        run_experiment(i+1, green_main, green_side, yellow)
+    print(f"Симуляция завершена. Базовые логи сохранены в {FIXED_LOG_PATH}")
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        run_fixed_simulation()
+    except KeyboardInterrupt:
+        print("Прервано пользователем")
+        traci.close()
