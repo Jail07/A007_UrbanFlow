@@ -49,9 +49,22 @@ INTERSECTIONS = {
         "id": "244500424",
         "in_edges": ["-186475564#4", "25684557#4", "186475564#1", "477271462#4"],
         "out_edges": ["186475564#4", "-25684557#4", "-186475564#1", "-477271462#4"],
+        "phases": {"NS_left_GREEN": 0, "NS_left_YELLOW": 1, "EW_GREEN": 2, "EW_YELLOW": 3}
+    },
+    "Muka_280015410": {
+        "id": "280015410",
+        "in_edges": ["1075767203#0", "-477271462#1", None, "192987238#2"],
+        "out_edges": ["-1075767203#0", "477271462#1", "49830666#1", None],
         "phases": {"NS_GREEN": 0, "NS_YELLOW": 1, "EW_GREEN": 2, "EW_YELLOW": 3}
+    },
+    "Gorko_280015414": {
+        "id": "280015414",
+        "in_edges": ["49830666#6", "620932850#2", None, "-829563410#1"],
+        "out_edges": [None, "-620932850#2", "277523407#1", "829563410#1"],
+        "phases": {"EW_GREEN": 0, "EW_YELLOW": 1, "NS_GREEN": 2, "NS_YELLOW": 3}
     }
 }
+
 
 # PHASE_NS_GREEN = 0
 # PHASE_NS_YELLOW = 1
