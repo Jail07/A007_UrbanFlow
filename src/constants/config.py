@@ -24,6 +24,7 @@ CAMERA_CONFIG_JSON_PATH_v2 =  "src/constants/test_v2/cameras_config.json"
 
 
 YOLOV8_CFG_PATH = YOLOV3_DIR / "best.pt"
+YOLOV3_CFG_PATH = YOLOV3_DIR / "yolov3.cfg"
 YOLOV3_WEIGHTS_PATH = YOLOV3_DIR / "yolov3.weights"
 
 

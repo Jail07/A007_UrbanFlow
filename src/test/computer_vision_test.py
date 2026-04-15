@@ -27,6 +27,9 @@ def load_lanes_config(config_path, intersection_id, camera_id):
 model = YOLO(YOLOV8_CFG_PATH)
 tracker = DeepSort(max_age=30)
 cap = cv2.VideoCapture(VIDEO_PATH)
+if not cap.isOpened():
+    print(f"ОШИБКА: OpenCV не смог открыть видео по пути: {VIDEO_PATH}")
+    exit()
 
 LANES = load_lanes_config(
     CAMERA_CONFIG_JSON_PATH_v1,
@@ -35,7 +38,7 @@ LANES = load_lanes_config(
 )
 
 target_classes = {
-    2: "car"
+    0: "toy-car"
 }
 
 LANE_COLORS = {
@@ -159,7 +162,7 @@ with open(LOG_FILE_PATH_V1, "w", newline="") as f:
 
         cv2.imshow("UrbanFlow - Polygons FIXED", frame)
 
-        if cv2.waitKey(1) == 27:
+        if cv2.waitKey(30) == 27:
             break
 
 cap.release()
