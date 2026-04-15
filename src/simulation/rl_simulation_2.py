@@ -19,8 +19,8 @@ BASE_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = BASE_DIR / "data"
 LOGS_DIR = DATA_DIR / "logs"
 SUMO_CFG = "data/routes/scenarios_04/sumo.sumocfg"
-LOG_PATH = LOGS_DIR / "urbanflow_detailed_log.csv"
-RL_LOG_PATH = LOGS_DIR / "rl_training_log.csv"
+LOG_PATH = LOGS_DIR / "urbanflow_detailed_log_2.csv"
+RL_LOG_PATH = LOGS_DIR / "rl_training_log_2.csv"
 
 SUMO_BINARY = "sumo-gui"
 # TLS_ID = "244500423"
@@ -200,9 +200,6 @@ def get_buses_on_edge(edge_id):
     return len(buses), "; ".join([f"{b}:[{len(traci.vehicle.getRoute(b))} edges]" for b in buses])
 
 
-import datetime  # Убедитесь, что импортировали
-
-
 def run_simulation():
     traci.start([SUMO_BINARY, "-c", str(SUMO_CFG)])
 
@@ -216,7 +213,6 @@ def run_simulation():
         except:
             pass
 
-        # Выделяем каждому перекрестку личные переменные состояния
         intersection_states[name] = {
             "last_switch_time": 0,
             "target_phase": None,

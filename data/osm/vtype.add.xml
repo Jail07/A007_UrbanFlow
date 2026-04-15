@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<additional>
-    <vType id="night_" color="255,0,0" vClass="passenger"/>
-    <vType id="blue_car" color="0,0,255" vClass="passenger"/>
-    <vType id="green_car" color="0,255,0" vClass="passenger"/>
-    <vType id="yellow_car" color="255,255,0" vClass="passenger"/>
+
+<!-- generated on 2026-04-15T23:41:00.651413+06:00 by Eclipse SUMO netedit 1.26.0
+-->
+
+<additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
+    <!-- VTypes -->
+    <vType id="blue_car" vClass="passenger" color="blue"/>
+    <vType id="green_car" vClass="passenger" color="green"/>
+    <vType id="night_" vClass="passenger" color="red"/>
+    <vType id="yellow_car" vClass="passenger" color="yellow"/>
 </additional>

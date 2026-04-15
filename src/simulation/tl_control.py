@@ -16,7 +16,6 @@ MIN_GREEN = 15
 
 
 def queue(edges):
-    """Суммарная очередь на наборе дорог"""
     return sum(traci.edge.getLastStepHaltingNumber(e) for e in edges)
 
 
@@ -32,7 +31,6 @@ while traci.simulation.getMinExpectedNumber() > 0:
     traci.simulationStep()
     t = traci.simulation.getTime()
 
-    # минимальное время фазы
     if t - last_switch < MIN_GREEN:
         continue
 

@@ -1,51 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<routes>
-    <vType id="bus"
-           vClass="bus"
-           accel="1.0"
-           decel="4.0"
-           length="12"
-           minGap="2.5"
-           maxSpeed="16.7"
-           color="0,1,0"/>
+<!-- generated on 2026-04-15T23:38:09.479409+06:00 by Eclipse SUMO netedit 1.26.0
+-->
 
-    <vType id="night_car"        color="0.2,0.2,0.5" maxSpeed="16.67" lcStrategic="2.0"
-       lcCooperative="1.0"
-       lcSpeedGain="1.0"
-       lcKeepRight="0.3"/>
-    <vType id="dawn_car"         color="0.4,0.4,0.8" maxSpeed="16.67" lcStrategic="2.0"
-       lcCooperative="1.0"
-       lcSpeedGain="1.0"
-       lcKeepRight="0.3"/>
-    <vType id="early_morning_car" color="0.7,0.7,0.9" maxSpeed="16.67" lcStrategic="2.0"
-       lcCooperative="1.0"
-       lcSpeedGain="1.0"
-       lcKeepRight="0.3"/>
-    <vType id="morning_peak_car" color="1,1,0.6" maxSpeed="16.67" lcStrategic="2.0"
-       lcCooperative="1.0"
-       lcSpeedGain="1.0"
-       lcKeepRight="0.3"/>
-    <vType id="lunch_car"       color="1,0.5,0.4" maxSpeed="16.67" lcStrategic="2.0"
-       lcCooperative="1.0"
-       lcSpeedGain="1.0"
-       lcKeepRight="0.3"/>
-    <vType id="day_car"          color="1,0.7,0.3" maxSpeed="16.67" lcStrategic="2.0"
-       lcCooperative="1.0"
-       lcSpeedGain="1.0"
-       lcKeepRight="0.3"/>
-    <vType id="afternoon_car"    color="1,0.5,0.2" maxSpeed="16.67" lcStrategic="2.0"
-       lcCooperative="1.0"
-       lcSpeedGain="1.0"
-       lcKeepRight="0.3"/>
-    <vType id="evening_peak_car" color="0.9,0.3,0.3" maxSpeed="16.67" lcStrategic="2.0"
-       lcCooperative="1.0"
-       lcSpeedGain="1.0"
-       lcKeepRight="0.3"/>
-    <vType id="late_evening_car" color="0.5,0.3,0.7" maxSpeed="16.67" lcStrategic="2.0"
-       lcCooperative="1.0"
-       lcSpeedGain="1.0"
-       lcKeepRight="0.3"/>
-
-
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <!-- VTypes -->
+    <vType id="afternoon_car" maxSpeed="16.67" color="255,128,51" lcStrategic="2.0" lcCooperative="1.0" lcSpeedGain="1.0" lcKeepRight="0.3"/>
+    <vType id="bus" length="12.00" minGap="2.50" maxSpeed="16.70" vClass="bus" color="green" accel="1.0" decel="4.0"/>
+    <vType id="dawn_car" maxSpeed="16.67" color="102,102,204" lcStrategic="2.0" lcCooperative="1.0" lcSpeedGain="1.0" lcKeepRight="0.3"/>
+    <vType id="day_car" maxSpeed="16.67" color="255,179,77" lcStrategic="2.0" lcCooperative="1.0" lcSpeedGain="1.0" lcKeepRight="0.3"/>
+    <vType id="early_morning_car" maxSpeed="16.67" color="179,179,230" lcStrategic="2.0" lcCooperative="1.0" lcSpeedGain="1.0" lcKeepRight="0.3"/>
+    <vType id="evening_peak_car" maxSpeed="16.67" color="230,77,77" lcStrategic="2.0" lcCooperative="1.0" lcSpeedGain="1.0" lcKeepRight="0.3"/>
+    <vType id="late_evening_car" maxSpeed="16.67" color="128,77,179" lcStrategic="2.0" lcCooperative="1.0" lcSpeedGain="1.0" lcKeepRight="0.3"/>
+    <vType id="lunch_car" maxSpeed="16.67" color="255,128,102" lcStrategic="2.0" lcCooperative="1.0" lcSpeedGain="1.0" lcKeepRight="0.3"/>
+    <vType id="morning_peak_car" maxSpeed="16.67" color="255,255,153" lcStrategic="2.0" lcCooperative="1.0" lcSpeedGain="1.0" lcKeepRight="0.3"/>
+    <vType id="night_car" maxSpeed="16.67" color="51,51,128" lcStrategic="2.0" lcCooperative="1.0" lcSpeedGain="1.0" lcKeepRight="0.3"/>
 </routes>
