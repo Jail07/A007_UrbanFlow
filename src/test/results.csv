@@ -1,0 +1,9 @@
+Metric,Version_1 (YOLOv3),Version_2 (YOLOv8)
+Architecture,YOLOv3 (OpenCV DNN),YOLOv8n (Ultralytics)
+Tracking,Manual Persistence (None),DeepSort Tracker
+Confidence Threshold,0.5,0.5
+Class Filtering,None (All COCO),"Vehicles (Car, Motor, Bus, Truck)"
+Library Dependency,"opencv-python, numpy","ultralytics, deep_sort_realtime"
+Performance Tier,Legacy / CPU-heavy,State-of-the-Art / Real-time
+ID Persistence,No (New ID every frame),Yes (Consistent Track IDs)
+Bounding Box Format,Center-based (calculated),XYXY (native)

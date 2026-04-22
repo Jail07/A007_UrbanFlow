@@ -1,0 +1,40 @@
+timestamp,total_vehicles,lane_left,lane_center,lane_right,vehicles_details
+2026-04-14 14:15:14,0,0,0,0,
+2026-04-14 14:15:14,0,0,0,0,
+2026-04-14 14:15:15,2,1,0,1,ID_1(bus)->right; ID_2(car)->left
+2026-04-14 14:15:15,2,1,0,1,ID_1(bus)->right; ID_2(car)->left
+2026-04-14 14:15:15,2,1,0,1,ID_1(bus)->right; ID_2(car)->left
+2026-04-14 14:15:15,2,1,0,1,ID_1(bus)->right; ID_2(car)->left
+2026-04-14 14:15:16,3,1,1,1,ID_1(bus)->right; ID_2(car)->left; ID_4(car)->center
+2026-04-14 14:15:16,3,1,1,1,ID_1(bus)->right; ID_2(car)->left; ID_4(car)->center
+2026-04-14 14:15:16,3,1,1,1,ID_1(bus)->right; ID_2(car)->left; ID_4(car)->center
+2026-04-14 14:15:17,3,2,0,1,ID_1(bus)->right; ID_2(car)->left; ID_4(car)->left
+2026-04-14 14:15:17,4,2,1,1,ID_1(bus)->right; ID_2(car)->left; ID_4(car)->left; ID_6(car)->center
+2026-04-14 14:15:18,4,2,1,1,ID_1(bus)->right; ID_2(car)->left; ID_4(car)->left; ID_6(car)->center
+2026-04-14 14:15:18,4,2,1,1,ID_1(bus)->right; ID_2(car)->left; ID_4(car)->left; ID_6(car)->center
+2026-04-14 14:15:19,4,2,1,1,ID_1(bus)->right; ID_2(car)->left; ID_4(car)->left; ID_6(car)->center
+2026-04-14 14:15:19,4,2,1,1,ID_1(bus)->right; ID_2(car)->left; ID_4(car)->left; ID_6(car)->center
+2026-04-14 14:15:20,5,3,1,1,ID_1(bus)->right; ID_2(car)->left; ID_4(car)->left; ID_6(car)->center; ID_7(truck)->left
+2026-04-14 14:15:20,5,3,1,1,ID_1(bus)->right; ID_2(car)->left; ID_4(car)->left; ID_6(car)->center; ID_7(truck)->left
+2026-04-14 14:15:21,5,3,1,1,ID_1(car)->right; ID_2(car)->left; ID_4(car)->left; ID_6(car)->center; ID_7(truck)->left
+2026-04-14 14:15:22,5,3,1,1,ID_1(car)->right; ID_2(car)->left; ID_4(car)->left; ID_6(car)->center; ID_7(truck)->left
+2026-04-14 14:15:23,5,3,1,1,ID_1(bus)->right; ID_2(car)->left; ID_4(car)->left; ID_6(car)->center; ID_7(truck)->left
+2026-04-14 14:15:23,5,3,1,1,ID_1(bus)->right; ID_2(car)->left; ID_4(car)->left; ID_6(car)->center; ID_7(truck)->left
+2026-04-14 14:15:24,5,3,1,1,ID_1(bus)->right; ID_2(car)->left; ID_4(car)->left; ID_6(car)->center; ID_7(truck)->left
+2026-04-14 14:15:24,5,4,0,1,ID_1(bus)->right; ID_2(car)->left; ID_4(car)->left; ID_6(car)->left; ID_7(truck)->left
+2026-04-14 14:15:25,5,4,0,1,ID_1(car)->right; ID_2(car)->left; ID_4(car)->left; ID_6(car)->left; ID_7(truck)->left
+2026-04-14 14:15:26,5,4,0,1,ID_1(car)->right; ID_2(car)->left; ID_4(car)->left; ID_6(car)->left; ID_7(truck)->left
+2026-04-14 14:15:26,6,4,1,1,ID_1(car)->right; ID_2(car)->left; ID_4(car)->left; ID_6(car)->left; ID_7(truck)->left; ID_9(car)->center
+2026-04-14 14:15:27,6,4,1,1,ID_1(car)->right; ID_2(car)->left; ID_4(car)->left; ID_6(car)->left; ID_7(truck)->left; ID_9(car)->center
+2026-04-14 14:15:27,6,4,1,1,ID_1(car)->right; ID_2(car)->left; ID_4(car)->left; ID_6(car)->left; ID_7(truck)->left; ID_9(car)->center
+2026-04-14 14:15:28,7,4,1,2,ID_1(car)->right; ID_2(car)->left; ID_4(car)->left; ID_6(car)->left; ID_7(truck)->left; ID_9(car)->center; ID_10(car)->right
+2026-04-14 14:15:29,8,4,1,3,ID_1(car)->right; ID_2(car)->left; ID_4(car)->left; ID_6(car)->left; ID_7(truck)->left; ID_9(car)->center; ID_10(car)->right; ID_11(car)->right
+2026-04-14 14:15:29,8,4,1,3,ID_1(car)->right; ID_2(car)->left; ID_4(car)->left; ID_6(car)->left; ID_7(truck)->left; ID_9(car)->center; ID_10(car)->right; ID_11(car)->right
+2026-04-14 14:15:30,8,4,1,3,ID_1(car)->right; ID_2(car)->left; ID_4(car)->left; ID_6(car)->left; ID_7(truck)->left; ID_9(car)->center; ID_10(car)->right; ID_11(car)->right
+2026-04-14 14:15:31,9,4,2,3,ID_1(car)->right; ID_2(car)->left; ID_4(car)->left; ID_6(car)->left; ID_7(truck)->left; ID_9(car)->center; ID_10(car)->right; ID_11(car)->right; ID_12(car)->center
+2026-04-14 14:15:31,9,4,2,3,ID_1(car)->right; ID_2(car)->left; ID_4(car)->left; ID_6(car)->left; ID_7(truck)->left; ID_9(car)->center; ID_10(car)->right; ID_11(car)->right; ID_12(car)->center
+2026-04-14 14:15:32,10,4,2,4,ID_1(car)->right; ID_2(car)->left; ID_4(car)->left; ID_6(car)->left; ID_7(truck)->left; ID_9(car)->center; ID_10(car)->right; ID_11(car)->right; ID_12(car)->center; ID_15(bus)->right
+2026-04-14 14:15:32,10,4,2,4,ID_1(car)->right; ID_2(car)->left; ID_4(car)->left; ID_6(car)->left; ID_7(truck)->left; ID_9(car)->center; ID_10(car)->right; ID_11(car)->right; ID_12(car)->center; ID_15(bus)->right
+2026-04-14 14:15:33,11,4,3,4,ID_1(car)->right; ID_2(car)->left; ID_4(car)->left; ID_6(car)->left; ID_7(truck)->left; ID_9(car)->center; ID_10(car)->right; ID_11(car)->right; ID_12(car)->center; ID_15(bus)->right; ID_17(car)->center
+2026-04-14 14:15:33,11,4,3,4,ID_1(car)->right; ID_2(car)->left; ID_4(car)->left; ID_6(car)->left; ID_7(truck)->left; ID_9(car)->center; ID_10(car)->right; ID_11(car)->right; ID_12(car)->center; ID_15(bus)->right; ID_17(car)->center
+2026-04-14 14:15:34,11,4,3,4,ID_1(car)->right; ID_2(car)->left; ID_4(car)->left; ID_6(car)->left; ID_7(truck)->left; ID_9(car)->center; ID_10(car)->right; ID_11(car)->right; ID_12(car)->center; ID_15(bus)->right; ID_17(car)->center

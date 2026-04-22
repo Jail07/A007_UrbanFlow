@@ -1,77 +1,169 @@
-# yolov8
-
 import cv2
+import json
+import numpy as np
+import time
+import csv
 
 from ultralytics import YOLO
 from deep_sort_realtime.deepsort_tracker import DeepSort
+from src.constants.config import VIDEO_PATH_1, CAMERA_CONFIG_JSON_PATH_v2, LOG_FILE_PATH_V2
 
-from src.constants.config import VIDEO_PATH_1
+
+def load_lanes_config(config_path, intersection_id, camera_id):
+    with open(config_path, 'r') as f:
+        config = json.load(f)
+
+    raw_lanes = config[intersection_id][camera_id]
+
+    lanes = {}
+    for lane_name, points in raw_lanes.items():
+        if not isinstance(points, list):
+            continue
+        lanes[lane_name] = np.array(points, np.int32)
+
+    return lanes
+
 
 model = YOLO("yolov8n.pt")
-# yolov8n.pt   (nano — очень быстро)
-# yolov8s.pt   (small)
-# yolov8m.pt   (medium)
-# yolov8l.pt   (large)
-# yolov8x.pt   (extra large)
-
 tracker = DeepSort(max_age=30)
-
 cap = cv2.VideoCapture(VIDEO_PATH_1)
 
-vehicle_classes = [2, 3, 5, 7]  # car, motorcycle, bus, truck
+LANES = load_lanes_config(
+    CAMERA_CONFIG_JSON_PATH_v2,
+    'intersection_001',
+    'camera_south'
+)
 
-while cap.isOpened():
+target_classes = {
+    2: "car",
+    3: "motorcycle",
+    5: "bus",
+    7: "truck"
+}
 
-    ret, frame = cap.read()
-    if not ret:
-        break
+LANE_COLORS = {
+    "lane_left": (0, 0, 255),
+    "lane_center": (0, 255, 0),
+    "lane_right": (255, 0, 0)
+}
 
-    results = model(frame)
+LANE_LABELS = {
+    "lane_left": "left",
+    "lane_center": "center",
+    "lane_right": "right"
+}
 
-    detections = []
 
-    for r in results:
-        boxes = r.boxes
 
-        for box in boxes:
+with open(LOG_FILE_PATH_V2, "w", newline="") as f:
+    writer = csv.writer(f)
+    writer.writerow([
+        "timestamp", "total_vehicles",
+        "lane_left", "lane_center", "lane_right",
+        "vehicles_details"
+    ])
 
-            cls = int(box.cls[0])
-            conf = float(box.conf[0])
+    while cap.isOpened():
+        ret, frame = cap.read()
+        if not ret:
+            break
 
-            if cls in vehicle_classes and conf > 0.5:
+        overlay = frame.copy()
+        for name, poly in LANES.items():
+            if name in LANE_COLORS:
+                cv2.fillPoly(overlay, [poly], LANE_COLORS[name])
 
-                x1, y1, x2, y2 = map(int, box.xyxy[0])
+        cv2.addWeighted(overlay, 0.3, frame, 0.7, 0, frame)
 
-                w = x2 - x1
-                h = y2 - y1
+        results = model(frame, verbose=False)
+        detections = []
 
-                detections.append(([x1, y1, w, h], conf, "car"))
+        for r in results:
+            for box in r.boxes:
+                cls = int(box.cls[0])
+                conf = float(box.conf[0])
 
-    tracks = tracker.update_tracks(detections, frame=frame)
+                if cls in target_classes and conf > 0.5:
+                    label = target_classes[cls]
+                    x1, y1, x2, y2 = map(int, box.xyxy[0])
 
-    for track in tracks:
+                    detections.append((
+                        [x1, y1, x2 - x1, y2 - y1],
+                        conf,
+                        label
+                    ))
 
-        if not track.is_confirmed():
-            continue
+        tracks = tracker.update_tracks(detections, frame=frame)
 
-        track_id = track.track_id
-        l, t, r, b = map(int, track.to_ltrb())
+        lane_counts = {k: 0 for k in LANE_LABELS.keys()}
+        current_vehicles = []
 
-        cv2.rectangle(frame, (l, t), (r, b), (255, 0, 0), 2)
+        for track in tracks:
+            if not track.is_confirmed():
+                continue
+
+            track_id = track.track_id
+            v_class = track.get_det_class()
+
+            l, t, r, b = map(int, track.to_ltrb())
+
+            cx = (l + r) // 2
+            cy = b
+
+            vehicle_lane = "unknown"
+
+            for lane_name, poly in LANES.items():
+                if cv2.pointPolygonTest(poly, (cx, cy), False) >= 0:
+                    vehicle_lane = lane_name
+                    lane_counts[lane_name] += 1
+                    break
+
+            if vehicle_lane in LANE_LABELS:
+                current_vehicles.append(
+                    f"ID_{track_id}({v_class})->{vehicle_lane}"
+                )
+
+            lane_label = LANE_LABELS.get(vehicle_lane, "unknown")
+
+            cv2.circle(frame, (cx, cy), 5, (0, 255, 255), -1)
+            cv2.rectangle(frame, (l, t), (r, b), (255, 255, 255), 2)
+
+            cv2.putText(
+                frame,
+                f"ID:{track_id} {lane_label}",
+                (l, t - 10),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.5,
+                (0, 255, 0),
+                2
+            )
+
+        total = sum(lane_counts.values())
+        details_str = "; ".join(current_vehicles)
+
+        writer.writerow([
+            time.strftime("%Y-%m-%d %H:%M:%S"),
+            total,
+            lane_counts["lane_left"],
+            lane_counts["lane_center"],
+            lane_counts["lane_right"],
+            details_str
+        ])
+
         cv2.putText(
             frame,
-            f"ID {track_id}",
-            (l, t - 10),
+            f"TOTAL: {total}",
+            (10, 30),
             cv2.FONT_HERSHEY_SIMPLEX,
-            0.7,
-            (0, 255, 0),
-            2,
+            1,
+            (255, 255, 255),
+            2
         )
 
-    cv2.imshow("Tracking", frame)
+        cv2.imshow("UrbanFlow - Polygons FIXED", frame)
 
-    if cv2.waitKey(1) == 27:
-        break
+        if cv2.waitKey(1) == 27:
+            break
 
 cap.release()
 cv2.destroyAllWindows()
